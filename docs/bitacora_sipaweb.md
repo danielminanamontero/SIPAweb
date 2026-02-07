@@ -1702,6 +1702,32 @@ El archivo deploy.yml debe estar dentro de la carpeta de tu proyecto, no en tu p
 
 ¿Ya lo has movido? Una vez que esté en SIPAweb/.github/workflows/deploy.yml, haz un ls -R .github para confirmar que lo ves ahí dentro. Si es así, ya puedes hacer el git add . y lanzar el cohete.
 
+Registro de Sesión | Auditoría de Git: Sincronización Forzada
+Contexto: Error non-fast-forward durante el primer push. Diagnóstico: El repositorio en GitHub se creó con archivos iniciales (como un README o una LICENSE) que no tienes en tu local. Git detecta que el historial de la nube y el tuyo son distintos y, por seguridad, bloquea la subida para no borrar lo que hay en GitHub.
+
+¡No te preocupes! Como este es tu primer commit oficial y queremos que tu local sea la "verdad absoluta", vamos a unificar los historiales.
+
+- La Solución: El "Force Push" (Uso bajo supervisión)
+  - Dado que acabas de crear el repositorio y queremos que la estructura que hemos diseñado (templates, sipaweb.py, .github) sea la que mande, usaremos el comando de fuerza. Esto sobrescribirá lo que haya en GitHub con tu trabajo local.
+
+  - Ejecuta este comando:
+
+    ```bash
+    git push -u origin main --force
+    ```
+
+- Nota para Tovid Dfrei (Manual CI/CD): > El flag --force solo debe usarse en la inicialización de proyectos o en ramas propias. En entornos de equipo, se prefiere git pull --rebase para fusionar historiales. En este caso, al ser un "Hito de Origen", forzar es la vía más limpia para asegurar que el pipeline de Actions empiece desde una base conocida.
+
+- ¿Qué esperar tras el comando?
+  - En el Terminal: Verás que los objetos se suben al 100%.
+  - En GitHub: Desaparecerán los archivos que creó GitHub por defecto (si los había) y aparecerá tu árbol de carpetas profesional.
+  - El Cohete: Automáticamente, GitHub detectará el archivo .github/workflows/deploy.yml y lanzará la primera Action.
+
+- Hito 3: Sincronización de Repositorio Remoto
+  - Incidencia: Conflicto de historiales (non-fast-forward).
+  - Resolución: Aplicación de --force push para establecer la base de código de SIPAweb como rama principal.
+  - Estado: DESPLIEGUE EN CURSO.
+
 #### Manual, explicaciones, notas, detalles, testeo, prueba final, despliegue finalizado, siguiente acción
 
 Con esta bitacora se completaría el hito 2 y comienzo del hito 3, la automatización ha comenzado, atraer documentación filtrarla y plasmarla aquí es mi trabajo ahora mismo y ese lo tengo que hacer yo solito y entregarte textos y experiencias para aprender a plasmarlas de la mejor forma.
