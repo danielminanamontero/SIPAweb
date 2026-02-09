@@ -23,7 +23,7 @@ SIPAweb es un motor de generación estática (SSG) personalizado que transforma 
 
 ## 🚀 Modo de Uso (Actor)
 
-- Clonar: git clone <https://github.com/mimodbland/sipaweb.git)>
+- Clonar: git clone <https://github.com/mimodbland/sipaweb.git>
 - Redactar: Añadir archivos .md en la carpeta templates/static/.
 - Publicar: git push origin main. El sistema procesa el contenido y actualiza la web automáticamente.
 
@@ -49,4 +49,6 @@ SIPAweb es un motor de generación estática (SSG) personalizado que transforma 
 
 Este proyecto se nutre de los principios de automatización explorados en el repositorio CI/CD by Tovid Dfrei. La evolución de este módulo es el resultado de la experimentación constante en entornos locales aplicados a necesidades de producción reales.
 
-🔗 Visita la Web: <mimodbland.github.io/sipaweb/>
+## 🌐 Visita el Proyecto
+
+[🔗 SIPAweb en vivo](https://danielminanamontero.github.io/SIPAweb/)

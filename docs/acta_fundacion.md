@@ -66,7 +66,7 @@ Hito 2: Página de presentación profesional (Landing Page inicial).
   - generar_sitio()
 - [x] Crear index.html
   - Test página html navegador
-- [] Planificar el despliege
+- [x] Planificar el despliege
   - Crear ubicación correcta
   - Crear index real .md, about-me.md debe ser secundaria, se incluye la biografía mínima
   - Crear proyectos.md
@@ -74,9 +74,41 @@ Hito 2: Página de presentación profesional (Landing Page inicial).
   - Crear ayuda.md
   - Test web completa, se ejecuta correctamente la actualización en local y todo es correcto
   - Añadir github actions, configurar correctamente, realizar pruebas necesarias
-- [] Revisión completa a modo auditoría
+- [ ] Revisión completa a modo auditoría
+  - [ ] README.md presente
+  - [ ] mkdocs.yml presente
+  - [ ] .gitignore presente
+  - [ ] requirements.txt presente
+  - [ ] /.github/workflows/deploy.yml presente
+  - [ ] acta_fundacion.md presente
+  - [ ] index.md presente
+  - [ ] referencia.md presente
+  - [ ] bitacora_sipaweb.md presente
+  - [ ] revisión arquitectura y árbol
+  - [ ] revisión lógica
+  - [ ] revisión objetivo
+  - [ ] revisión situación final
+
+Hito 2 A : Confeccionar página a página
+
+- [ ] Diseño estructura, acciones, contenido de index.html
+  - [ ] Definir estructura
+  - [ ] Definir colores marca
+  - [ ] Definir iconos
+  - [ ] Definir bloques
+  - [ ] Definir contenido
+- [ ] Diseño estructura, acciones, contenido de sobre-mi.html
+- [ ] Diseño estructura, acciones, contenido de proyectos.html
+- [ ] Diseño estructura, acciones, contenido de contacto.html
+- [ ] Diseño estructura, acciones, contenido de ayuda.html
+- [ ] Enlace de todas con todas, a través de una barra navegación fija
+- [ ] Enlace de los proyectos en el pie según perfil tovid o mimod
 
 [] Cierre proyecto SIPAweb versión 1.0
+
+### Proyecto conjunto con SIPA_PROJECT
+
+Pendiente de retomar el SIPA_PROJECT para encajarlo en su cronograma de desarrollo
 
 #### HITO 3 PLANIFICAR
 
