@@ -51,4 +51,4 @@ Este proyecto se nutre de los principios de automatización explorados en el rep
 
 ## 🌐 Visita el Proyecto
 
-[🔗 SIPAweb en vivo](https://danielminanamontero.github.io/SIPAweb/)
+[🔗 SIPAweb en vivo ](https://danielminanamontero.github.io/SIPAweb/)

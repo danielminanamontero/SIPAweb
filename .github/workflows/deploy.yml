@@ -3,6 +3,9 @@ name: SIPAweb Auto-Deploy
 on:
   push:
     branches: [ main ]  # Se activa al hacer push a la rama principal
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'  # Ignora cambios en la carpeta docs (si solo documentas en MkDocs)
 
 permissions:
   contents: write # Permiso para que el Action publique la web
