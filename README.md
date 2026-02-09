@@ -49,4 +49,6 @@ SIPAweb es un motor de generación estática (SSG) personalizado que transforma 
 
 Este proyecto se nutre de los principios de automatización explorados en el repositorio CI/CD by Tovid Dfrei. La evolución de este módulo es el resultado de la experimentación constante en entornos locales aplicados a necesidades de producción reales.
 
-🔗 [Visita la Web:](mimodbland.github.io/sipaweb/)
+## 🌐 Visita el Proyecto
+
+[🔗 SIPAweb en vivo](https://danielminanamontero.github.io/SIPAweb/)
