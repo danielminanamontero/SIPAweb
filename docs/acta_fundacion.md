@@ -74,28 +74,28 @@ Hito 2: Página de presentación profesional (Landing Page inicial).
   - Crear ayuda.md
   - Test web completa, se ejecuta correctamente la actualización en local y todo es correcto
   - Añadir github actions, configurar correctamente, realizar pruebas necesarias
-- [ ] Revisión completa a modo auditoría
-  - [ ] README.md presente
-  - [ ] mkdocs.yml presente
-  - [ ] .gitignore presente
-  - [ ] requirements.txt presente
-  - [ ] /.github/workflows/deploy.yml presente
-  - [ ] acta_fundacion.md presente
-  - [ ] index.md presente
-  - [ ] referencia.md presente
-  - [ ] bitacora_sipaweb.md presente
-  - [ ] revisión arquitectura y árbol
-  - [ ] revisión lógica
-  - [ ] revisión objetivo
-  - [ ] revisión situación final
+- [x] Revisión completa a modo auditoría
+  - [x] README.md presente
+  - [x] mkdocs.yml presente
+  - [x] .gitignore presente
+  - [x] requirements.txt presente
+  - [x] /.github/workflows/deploy.yml presente
+  - [x] acta_fundacion.md presente
+  - [x] index.md presente
+  - [x] referencia.md presente
+  - [x] bitacora_sipaweb.md presente
+  - [x] revisión arquitectura y árbol
+  - [x] revisión lógica
+  - [x] revisión objetivo
+  - [x] revisión situación final
 
 Hito 2 A : Confeccionar página a página
 
 - [ ] Diseño estructura, acciones, contenido de index.html
-  - [ ] Definir estructura
-  - [ ] Definir colores marca
-  - [ ] Definir iconos
-  - [ ] Definir bloques
+  - [x] Definir estructura
+  - [x] Definir colores marca
+  - [x] Definir iconos
+  - [x] Definir bloques
   - [ ] Definir contenido
 - [ ] Diseño estructura, acciones, contenido de sobre-mi.html
 - [ ] Diseño estructura, acciones, contenido de proyectos.html
