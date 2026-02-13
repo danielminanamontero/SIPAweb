@@ -1417,6 +1417,8 @@ Pregunta: no, para no hay 2B, estamos en hito 2A en la version de sipaweb 1.1, n
 
 ¿Te parece si empezamos por el contenido del index.md? Pásame los textos rescatados cuando los tengas y les damos forma dentro del estándar que ya hemos validado. Concretamos y cerramos.
 
+- Realizado update a la versión SIPAweb 1.3, actions funciona perfectamente, la página ha sido actualizada correctamente.
+
 #### Creación completa de index.html y publicación de la misma
 
 #### Cerrada publicado index.html versión 1.0 oficial, enlace a SIPA_PROJECT previsto 31/01/2026
