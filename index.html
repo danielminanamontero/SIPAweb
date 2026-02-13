@@ -1,57 +1,109 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Miñana Montero | SIPAweb</title>
+    <meta name="description" content="SIPAweb - Identidad Digital Automática de Daniel Miñana">
+    <title>SIPA Identity | SIPAweb</title>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
     <style>
-        :root { --spacing: 1.5rem; }
-        footer { padding: 2rem 0; margin-top: 3rem; border-top: 1px solid #e1e1e1; }
-        .perfiles { display: flex; justify-content: space-between; gap: 2rem; }
-        @media (max-width: 600px) { .perfiles { flex-direction: column; } }
+        :root { 
+            --primary: #39ff14; 
+            --spacing-grid: 1rem;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-grid);
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .bloque-card {
+            padding: 1.5rem;
+            border: 1px solid var(--muted-border-color);
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            background-color: #1a1d21; /* Aseguramos consistencia de fondo */
+        }
+
+        .bloque-card:hover { transform: translateY(-5px); }
+
+        main.container {
+            max-width: 1200px; 
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: block;
+        }
+
+        .bloque-card h3 { margin-top: 1rem; font-size: 1.25rem; }
+        .bloque-card ul { padding-left: 1rem; font-size: 0.9rem; }
+        footer { border-top: 1px solid var(--muted-border-color); padding: 2rem 0; margin-top: 3rem;}
     </style>
 </head>
 <body>
     <nav class="container">
         <ul>
-            <li><strong>SIPAweb</strong></li>
+            <li><i class="ph ph-cpu" style="font-size: 1.5rem; color: var(--primary);"></i> <strong>SIPA</strong></li>
         </ul>
         <ul>
-            <li><a href="#biografia">Biografía</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><a href="ayuda.html" class="secondary">Ayuda</a></li>
+            <li><a href="index.html"><i class="ph ph-house"></i> Inicio</a></li>
+            <li><a href="#proyectos"><i class="ph ph-rocket-launch"></i> Proyectos</a></li>
+            <li><a href="ayuda.html"><i class="ph ph-question"></i> Ayuda</a></li>
         </ul>
     </nav>
 
     <main class="container">
-        <header>
-            <hgroup>
-                <h1>Daniel Miñana Montero</h1>
-                <h2>Desarrollador de Sistemas | +10 años en IT / SIPA Architect</h2>
-            </hgroup>
-        </header>
+        <div id="app-content">
+            <h1>Bienvenido a SIPAweb</h1>
+<p>Este es el núcleo de tu identidad digital generado automáticamente.</p>
 
-        <section id="contenido">
-            <h1>Mis trayectorias</h1>
-<p>Soy una persona proactiva, responsable y con gran capacidad de trabajo en equipo, me considero un profesional de IT con una larga experiencia en diversos roles como s<strong>oporte técnico, administración de redes, virtualización, automatización, desarrollo web y seguridad</strong>.</p>
-<p>Mis <strong>habilidades de comunicación y resolución de problemas</strong> me permiten establecer relaciones sólidas con los usuarios y ofrecer soluciones personalizadas. Soy un apasionado de las nuevas tecnologías y me mantengo actualizado a través de certificaciones y cursos en línea. Mi objetivo es contribuir al éxito de los proyectos tecnológicos, optimizando procesos y garantizando la satisfacción del cliente</p>
-        </section>
+            <div class="bento-grid">
+                
+                <article class="bloque-card">
+                    <i class="ph ph-shield-check" style="font-size: 2rem; color: var(--primary);"></i>
+                    <h3>Cybersecurity</h3>
+                    <div class="card-body">
+                        <h1>Ciberseguridad</h1>
+<p>SIPAweb implementa un sistema de hash de ficheros y directorios, que lo protege contra la modificación de contenido externamente, antes de convertir los ficheros .md en ficheros .html revisa los hash anteriores y en el caso de no coincidir lanza un alerta para la autorización por humanos del cambio. Se realiza la implementación de integridad basada en hashing SHA-256.</p>
+                    </div>
+                    
+                    <a href="'[#](https://github.com/toviddfrei/FCH-CyberAudit)'" class="outline">Saber más</a>
+                    
+                </article>
+                
+                <article class="bloque-card">
+                    <i class="ph ph-shield-check" style="font-size: 2rem; color: var(--primary);"></i>
+                    <h3>Sobre mi</h3>
+                    <div class="card-body">
+                        <h1>Sobre mí</h1>
+<p>Esta sección es para hablar sobre mi, mis experiencias, dkljaljlñagj</p>
+                    </div>
+                    
+                    <a href="'#'" class="outline">Saber más</a>
+                    
+                </article>
+                
+            </div>
+        </div>
     </main>
 
     <footer class="container">
-        <div class="perfiles">
+        <div class="grid">
             <div>
-                <strong>mimod bland</strong><br>
-                <small>Consultoría y Proyectos Comerciales</small>
+                <h5>Mimod Bland</h5>
+                <p><small>Estrategia y Negocio</small></p>
             </div>
             <div>
-                <strong>tovid dfrei</strong><br>
-                <small>I+D, Laboratorio y Código Abierto</small>
+                <h5>Tovid Dfrei</h5>
+                <p><small>Investigación y Código</small></p>
             </div>
         </div>
-        <p style="margin-top: 1rem;"><small>© 2026 SIPAweb - Generado automáticamente.</small></p>
+        <p align="center"><small>Status: Protegido | Tag: Core</small></p>
     </footer>
 </body>
 </html>
