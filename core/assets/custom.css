@@ -1,0 +1,92 @@
+:root { 
+    --primary: #39ff14; 
+    --spacing-grid: 1rem;
+}
+
+/* Unificación de anchos SIPA */
+header.container, 
+main.container, 
+footer.container {
+    max-width: 1200px; /* O el ancho que prefieras */
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Ajuste fino para la Navbar */
+nav {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-grid);
+    margin-top: 2rem;
+    width: 100%;
+}
+.bloque-card {
+    padding: 1.5rem;
+    border: 1px solid var(--muted-border-color);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    background-color: #1a1d21; /* Aseguramos consistencia de fondo */
+}
+.bloque-card:hover { transform: translateY(-5px); }
+main.container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: block;
+}
+.bloque-card h3 { margin-top: 1rem; font-size: 1.25rem; }
+.bloque-card ul { padding-left: 1rem; font-size: 0.9rem; }
+footer { border-top: 1px solid var(--muted-border-color); padding: 2rem 0; margin-top: 3rem;}
+
+/* Identidad SIPA */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 3rem; /* Tamaño ajustable */
+    color: var(--primary);
+}
+
+.logo-text {
+    font-size: 2rem; /* Tamaño ajustable */
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--primary);
+}
+
+.hero-sipa {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), 
+                url('../img/avatargithub.png'); /* Ruta relativa desde css/ */
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh; /* El 60% que comentabas */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Nav arriba, contenido al centro */
+    color: white;
+}
+
+.hero-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajuste de color para los enlaces de la nav sobre fondo oscuro */
+.hero-sipa .nav-link, .hero-sipa .logo-text, .hero-sipa .logo-icon {
+    color: white !important;
+}

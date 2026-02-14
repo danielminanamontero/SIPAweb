@@ -7,55 +7,31 @@
     <title>{{ titulo }} | SIPAweb</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="css/custom.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
-    <style>
-        :root { 
-            --primary: #39ff14; 
-            --spacing-grid: 1rem;
-        }
-        
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-grid);
-            margin-top: 2rem;
-            width: 100%;
-        }
-
-        .bloque-card {
-            padding: 1.5rem;
-            border: 1px solid var(--muted-border-color);
-            border-radius: 8px;
-            transition: transform 0.2s ease;
-            background-color: #1a1d21; /* Aseguramos consistencia de fondo */
-        }
-
-        .bloque-card:hover { transform: translateY(-5px); }
-
-        main.container {
-            max-width: 1200px; 
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: block;
-        }
-
-        .bloque-card h3 { margin-top: 1rem; font-size: 1.25rem; }
-        .bloque-card ul { padding-left: 1rem; font-size: 0.9rem; }
-        footer { border-top: 1px solid var(--muted-border-color); padding: 2rem 0; margin-top: 3rem;}
-    </style>
 </head>
 <body>
-    <nav class="container">
-        <ul>
-            <li><i class="ph ph-cpu" style="font-size: 1.5rem; color: var(--primary);"></i> <strong>SIPA</strong></li>
-        </ul>
-        <ul>
-            <li><a href="index.html"><i class="ph ph-house"></i> Inicio</a></li>
-            <li><a href="#proyectos"><i class="ph ph-rocket-launch"></i> Proyectos</a></li>
-            <li><a href="ayuda.html"><i class="ph ph-question"></i> Ayuda</a></li>
-        </ul>
-    </nav>
+    <header class="hero-sipa">
+        <nav class="container">
+            <ul>
+                <li>
+                    <a href="index.html" class="logo-container">
+                        <i class="ph ph-cpu logo-icon"></i> 
+                        <span class="logo-text">{{ nombre_sitio | default('SIPA') }}</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="index.html" class="nav-link"><i class="ph ph-house"></i> Inicio</a></li>
+                <li><a href="ayuda.html" class="nav-link"><i class="ph ph-question"></i> Ayuda</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content container">
+            <h1>{{ titulo }}</h1>
+            <p class="hero-intro">{{ subtitulo }}</p>
+        </div>
+    </header>
 
     <main class="container">
         <div id="app-content">

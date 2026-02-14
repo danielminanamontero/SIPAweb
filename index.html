@@ -7,64 +7,39 @@
     <title>SIPA Identity | SIPAweb</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="css/custom.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
-    <style>
-        :root { 
-            --primary: #39ff14; 
-            --spacing-grid: 1rem;
-        }
-        
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-grid);
-            margin-top: 2rem;
-            width: 100%;
-        }
-
-        .bloque-card {
-            padding: 1.5rem;
-            border: 1px solid var(--muted-border-color);
-            border-radius: 8px;
-            transition: transform 0.2s ease;
-            background-color: #1a1d21; /* Aseguramos consistencia de fondo */
-        }
-
-        .bloque-card:hover { transform: translateY(-5px); }
-
-        main.container {
-            max-width: 1200px; 
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: block;
-        }
-
-        .bloque-card h3 { margin-top: 1rem; font-size: 1.25rem; }
-        .bloque-card ul { padding-left: 1rem; font-size: 0.9rem; }
-        footer { border-top: 1px solid var(--muted-border-color); padding: 2rem 0; margin-top: 3rem;}
-    </style>
 </head>
 <body>
-    <nav class="container">
-        <ul>
-            <li><i class="ph ph-cpu" style="font-size: 1.5rem; color: var(--primary);"></i> <strong>SIPA</strong></li>
-        </ul>
-        <ul>
-            <li><a href="index.html"><i class="ph ph-house"></i> Inicio</a></li>
-            <li><a href="#proyectos"><i class="ph ph-rocket-launch"></i> Proyectos</a></li>
-            <li><a href="ayuda.html"><i class="ph ph-question"></i> Ayuda</a></li>
-        </ul>
-    </nav>
+    <header class="hero-sipa">
+        <nav class="container">
+            <ul>
+                <li>
+                    <a href="index.html" class="logo-container">
+                        <i class="ph ph-cpu logo-icon"></i> 
+                        <span class="logo-text">Daniel Miñana Montero</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="index.html" class="nav-link"><i class="ph ph-house"></i> Inicio</a></li>
+                <li><a href="ayuda.html" class="nav-link"><i class="ph ph-question"></i> Ayuda</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content container">
+            <h1>SIPA Identity</h1>
+            <p class="hero-intro">Sistema de Identificación Personal Autorizada</p>
+        </div>
+    </header>
 
     <main class="container">
         <div id="app-content">
-            <h1>Daniel Miñana Montero</h1>
-<h2>La convergencia entre Experiencia e Innovación</h2>
+            <h1>La convergencia entre Experiencia e Innovación</h1>
 <p>Bienvenido a <strong>SIPAweb</strong>, el núcleo digital de mi identidad profesional. Este espacio no es solo una web; es un ecosistema automatizado diseñado para gestionar y proyectar una trayectoria de más de dos décadas en el sector tecnológico.</p>
-<h3>¿Qué es SIPA?</h3>
+<h2>¿Qué es SIPA?</h2>
 <p>El <strong>Sistema de Identificación Personal Autorizada (SIPA)</strong> nace de la necesidad de unificar mi perfil profesional bajo un estándar de integridad y transparencia. Es el motor que destila años de administración de sistemas, redes y soporte técnico hacia el nuevo paradigma de la automatización y la ciberseguridad.</p>
-<h3>¿Qué es SIPAweb?</h3>
+<h2>¿Qué es SIPAweb?</h2>
 <p>Es la implementación física de esta visión. Un sistema <strong>automático, gratuito y resiliente</strong> que transforma documentos Markdown en una presencia web profesional. Construido bajo la filosofía <em>Plug &amp; Play</em>, SIPAweb garantiza que mi perfil esté siempre actualizado, auditado y listo para los retos del futuro digital.</p>
 
             <div class="bento-grid">
