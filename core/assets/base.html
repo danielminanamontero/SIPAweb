@@ -54,18 +54,40 @@
         </div>
     </main>
 
-    <footer class="container">
-        <div class="grid">
-            <div>
-                <h5>{{ perfil_a | default('mimod bland') }}</h5>
-                <p><small>Estrategia y Negocio</small></p>
-            </div>
-            <div>
-                <h5>{{ perfil_b | default('tovid dfrei') }}</h5>
-                <p><small>Investigación y Código</small></p>
+    <footer class="footer-sipa">
+        <div class="container">
+            <div class="grid">
+                <div class="footer-col">
+                    <p><strong>Daniel Miñana Montero</strong><br>
+                    <small>by SIPAweb 2026</small></p>
+                    <a href="#top" class="nav-link-subir"><i class="ph ph-caret-double-up"></i> Inicio</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h6>Conectar</h6>
+                    <ul class="footer-links">
+                        <li><a href="https://linkedin.com/in/danielminanamontero" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/mimod-bland" target="_blank">GitHub (Mimod Bland)</a></li>
+                        <li><a href="https://github.com/tovid-dfrei" target="_blank">GitHub (Tovid Dfrei)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h6>Recursos</h6>
+                    <a href="#" class="btn-cv-azul">
+                        <i class="ph ph-file-pdf"></i> Curriculum
+                    </a>
+                </div>
+
+                <div class="footer-col">
+                    <h6>Radar Ciber</h6>
+                    <ul class="footer-links">
+                        <li><a href="https://www.incibe.es" target="_blank">INCIBE</a></li>
+                        <li><a href="#">Seguridad IT</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <p align="center"><small>Status: {{ estado }} | Tag: {{ tag }}</small></p>
     </footer>
 </body>
 </html>

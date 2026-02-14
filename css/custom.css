@@ -1,79 +1,47 @@
+/**
+ * SIPAweb Design System v1.3.1
+ * ----------------------------
+ * Autor: Daniel Miñana (Artesano IT)
+ * Descripción: Control de Identidad Digital, Hero Section y Bento Grid.
+ * Estándar: Compatible con Pico.css (Sobrescribe contenedores y espaciado).
+ */
+
 :root { 
     --primary: #39ff14; 
     --spacing-grid: 1rem;
+    --sipa-max-width: 1200px;
 }
 
-/* Unificación de anchos SIPA */
+/* --- ESTRUCTURA GLOBAL (Layout) --- */
+
+/* Unificación de anchos y control de espaciado */
 header.container, 
 main.container, 
 footer.container {
-    max-width: 1200px; /* O el ancho que prefieras */
+    max-width: var(--sipa-max-width) !important;
     margin-right: auto;
     margin-left: auto;
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-/* Ajuste fino para la Navbar */
-nav {
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-grid);
-    margin-top: 2rem;
-    width: 100%;
-}
-.bloque-card {
-    padding: 1.5rem;
-    border: 1px solid var(--muted-border-color);
-    border-radius: 8px;
-    transition: transform 0.2s ease;
-    background-color: #1a1d21; /* Aseguramos consistencia de fondo */
-}
-.bloque-card:hover { transform: translateY(-5px); }
+/* Ajuste del Body/Main: Añadimos padding-top para separar del Hero */
 main.container {
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 0 1rem;
+    padding-top: 3rem !important; /* Aquí es donde controlas la separación real */
     display: block;
 }
-.bloque-card h3 { margin-top: 1rem; font-size: 1.25rem; }
-.bloque-card ul { padding-left: 1rem; font-size: 0.9rem; }
-footer { border-top: 1px solid var(--muted-border-color); padding: 2rem 0; margin-top: 3rem;}
 
-/* Identidad SIPA */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-}
-
-.logo-icon {
-    font-size: 3rem; /* Tamaño ajustable */
-    color: var(--primary);
-}
-
-.logo-text {
-    font-size: 2rem; /* Tamaño ajustable */
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: var(--primary);
-}
+/* --- HERO SECTION (Identidad Visual) --- */
 
 .hero-sipa {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), 
-                url('../img/avatargithub.png'); /* Ruta relativa desde css/ */
+                url('../img/avatargithub.png');
     background-size: cover;
     background-position: center;
-    min-height: 60vh; /* El 60% que comentabas */
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Nav arriba, contenido al centro */
+    justify-content: flex-start;
     color: white;
 }
 
@@ -84,9 +52,131 @@ footer { border-top: 1px solid var(--muted-border-color); padding: 2rem 0; margi
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 2rem; /* Separación del H1 respecto a la Nav */
 }
 
-/* Ajuste de color para los enlaces de la nav sobre fondo oscuro */
-.hero-sipa .nav-link, .hero-sipa .logo-text, .hero-sipa .logo-icon {
+/* --- NAVEGACIÓN E IDENTIDAD --- */
+
+nav {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--primary);
+}
+
+/* Forzado de color sobre fondo oscuro del Hero */
+.hero-sipa .nav-link, 
+.hero-sipa .logo-text, 
+.hero-sipa .logo-icon {
     color: white !important;
+}
+
+/* --- BENTO GRID (Contenido) --- */
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-grid);
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.bloque-card {
+    padding: 1.5rem;
+    border: 1px solid var(--muted-border-color);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    background-color: #1a1d21;
+}
+
+.bloque-card:hover { transform: translateY(-5px); }
+
+/* --- FOOTER: AJUSTE DE CENTRADO Y LISTAS --- */
+
+.footer-sipa {
+    background-color: #1a1d21;
+    border-top: 1px solid var(--muted-border-color);
+    padding: 4rem 0;
+    margin-top: 5rem;
+    color: #8a8e94; /* Letra más fina y discreta */
+}
+
+/* Forzado de centrado en el Grid de Pico */
+.footer-sipa .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido de cada columna */
+}
+
+.footer-sipa h6 {
+    color: var(--primary) !important;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 1.2rem;
+}
+
+/* Limpieza total de listas */
+.footer-links {
+    list-style: none !important; /* Sin puntos */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-links li {
+    margin-bottom: 0.4rem;
+    padding: 0;
+}
+
+.footer-links a {
+    color: #8a8e94;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* Botón CV Azul Minimalista */
+.btn-cv-azul {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #3d444d; /* Borde discreto */
+    border-radius: 4px;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-cv-azul:hover {
+    border-color: var(--primary);
+    background-color: rgba(16, 173, 255, 0.1);
 }
