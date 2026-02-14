@@ -10,7 +10,7 @@ estado: Protegido
 tag: Core
 ---
 
-# La convergencia entre Experiencia e Innovación
+# La convergencia entre experiencia e innovación
 
 Bienvenido a **SIPAweb**, el núcleo digital de mi identidad profesional. Este espacio no es solo una web; es un ecosistema automatizado diseñado para gestionar y proyectar una trayectoria de más de dos décadas en el sector tecnológico.
 

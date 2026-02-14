@@ -2,7 +2,7 @@
 id: Proyectos
 icono: ph-rocket-launch
 titulo: SIPAcurator & More
-enlace: '#'
+enlace: index.html
 orden: 3
 estado: Preparando
 tag: i+D
