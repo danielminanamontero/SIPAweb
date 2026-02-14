@@ -1,5 +1,5 @@
 /**
- * SIPAweb Design System v1.3.1
+ * SIPAweb Design System v1.3.5
  * ----------------------------
  * Autor: Daniel Miñana (Artesano IT)
  * Descripción: Control de Identidad Digital, Hero Section y Bento Grid.
@@ -14,7 +14,6 @@
 
 /* --- ESTRUCTURA GLOBAL (Layout) --- */
 
-/* Unificación de anchos y control de espaciado */
 header.container, 
 main.container, 
 footer.container {
@@ -25,9 +24,8 @@ footer.container {
     padding-right: 1rem;
 }
 
-/* Ajuste del Body/Main: Añadimos padding-top para separar del Hero */
 main.container {
-    padding-top: 3rem !important; /* Aquí es donde controlas la separación real */
+    padding-top: 3rem !important;
     display: block;
 }
 
@@ -52,7 +50,7 @@ main.container {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 2rem; /* Separación del H1 respecto a la Nav */
+    padding-top: 2rem;
 }
 
 /* --- NAVEGACIÓN E IDENTIDAD --- */
@@ -81,7 +79,6 @@ nav {
     color: var(--primary);
 }
 
-/* Forzado de color sobre fondo oscuro del Hero */
 .hero-sipa .nav-link, 
 .hero-sipa .logo-text, 
 .hero-sipa .logo-icon {
@@ -108,29 +105,30 @@ nav {
 
 .bloque-card:hover { transform: translateY(-5px); }
 
-/* --- FOOTER: AJUSTE DE CENTRADO Y LISTAS --- */
+/* --- FOOTER: AJUSTE DE CENTRADO Y LIMPIEZA TOTAL --- */
 
 .footer-sipa {
     background-color: #1a1d21;
     border-top: 1px solid var(--muted-border-color);
     padding: 4rem 0;
     margin-top: 5rem;
-    color: #8a8e94; /* Letra más fina y discreta */
+    color: #8a8e94;
+    text-align: center;
 }
 
-/* Forzado de centrado en el Grid de Pico */
 .footer-sipa .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: center;
-    text-align: center;
+    align-items: start;
     gap: 2rem;
 }
 
 .footer-col {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el contenido de cada columna */
+    align-items: center;
+    text-align: center;
 }
 
 .footer-sipa h6 {
@@ -142,16 +140,25 @@ nav {
     margin-bottom: 1.2rem;
 }
 
-/* Limpieza total de listas */
+/* ELIMINACIÓN DE LOS CUADRADITOS (Pico.css override) */
 .footer-links {
-    list-style: none !important; /* Sin puntos */
+    list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
 .footer-links li {
+    list-style-type: none !important;
     margin-bottom: 0.4rem;
-    padding: 0;
+    padding: 0 !important;
+}
+
+/* Bloque crítico: Esto elimina el cuadrado inyectado por Pico */
+.footer-links li::before {
+    display: none !important;
+    content: "" !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .footer-links a {
@@ -165,11 +172,11 @@ nav {
     color: var(--primary);
 }
 
-/* Botón CV Azul Minimalista */
+/* Botón CV Personalizado */
 .btn-cv-azul {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
-    border: 1px solid #3d444d; /* Borde discreto */
+    border: 1px solid #3d444d;
     border-radius: 4px;
     color: var(--primary);
     text-decoration: none;
@@ -178,5 +185,5 @@ nav {
 
 .btn-cv-azul:hover {
     border-color: var(--primary);
-    background-color: rgba(16, 173, 255, 0.1);
+    background-color: rgba(57, 255, 20, 0.1);
 }

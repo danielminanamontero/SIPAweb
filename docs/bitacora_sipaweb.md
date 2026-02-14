@@ -1766,6 +1766,44 @@ Daniel, el diablo está en los detalles y el "Artesano IT" no descansa hasta que
 
 - ¿Quieres que valide el enlace de GitHub Pages una vez lo subas para confirmar que el centrado se comporta bien en móvil y escritorio?
 
+Pregunta: Vale, despues de algunos cambios esta perfecta, la dejamos asi, me parece muy presentable, se han eliminado los puntos y queda creo yo que fina del estilo de la web, ha quedado bastante bien, voy a cerrar la versión a 1.4 definitivamente y la voy a subir para dar por cerrado el index.md e index.html y pasa con tranquilidad a sobre-mi, ver la transición y ver si ahi posibilidad de despliege automatico, pero bueno antes de eso, para cerrar esta bitácora que ya esta en 1800 lineas, vamos a realizar una revisión completa de lo publicado, en plan auditoria.
+
 #### Revisión completa de lo publicado, ortografía, enlaces, verificación exhaustiva
 
-#### Cerrada verificada por completo
+- Titulo y barra de navegación
+- Imagen
+- Frase 1
+- Frase 2
+- Body text
+- Bloques 1,2,3,4,5
+- footer
+
+Revisión ortografica, soy dislexico y como habras observado lo mio no es escribir deprisa, por lo tanto, quiero establecer como control de calidad un control ortografico
+
+- Revisar enlaces de cada elemento
+  - Titulo
+  - Inicio
+  - Ayuda
+  - Bloque 1,2,3,4,5
+  - footer
+    - arriba
+    - redes sociales 1
+    - redes sociales 2
+    - redes sociales 3
+    - web interes 1
+    - web interes 2
+    - web interes 3
+
+- Es una verificación exhaustiva, y tambien te digo final, completamos esto y te dejo descansar, cierro index.html
+
+- He verificado toda la ortografía de lo publicado a traves de una web online copia y pega, ese proceso es final previo a publicar definitivamente.
+- Vamos a verificar los enlaces, tengo estos a solucionar:
+  - Ayuda
+  - bloques, ayuda, bitacaora, proyectos, sobre-mi
+  - redes github mimod y tovid revisarlos
+
+- Todos los links comprobados y verificados. Cerramos esta bitácora
+
+- Realizo commit versión 1.4 index.html completo
+
+#### Cerrada 14/02/2026 18:37:07

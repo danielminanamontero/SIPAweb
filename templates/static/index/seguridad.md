@@ -7,6 +7,6 @@ orden: 2
 estado: Auditado
 tag: Seguridad
 ---
-# Bolardo del proyecto FHS-Cybersecurity
+# Bolardo, del proyecto FCH-CyberAudit
 
-SIPAweb implementa un sistema de hash de ficheros y directorios, que lo protege contra la modificación de contenido externamente, antes de convertir los ficheros .md en ficheros .html revisa los hash anteriores y en el caso de no coincidir lanza un alerta para la autorización por humanos del cambio. Se realiza la implementación de integridad basada en hashing SHA-256.
+SIPAweb implementa un sistema de hash de ficheros y directorios que lo protege contra la modificación de contenido externo; antes de convertir los ficheros .md en ficheros .html, revisa los hashes anteriores y, en el caso de no coincidir, lanza una alerta para la autorización por humanos del cambio. Se realiza la implementación de integridad basada en hashing SHA-256.
