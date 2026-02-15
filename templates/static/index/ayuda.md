@@ -2,7 +2,7 @@
 id: Ayuda
 icono: ph-lifebuoy
 titulo: Documentación
-enlace: index.html
+enlace: ayuda.html
 orden: 5
 estado: Preparando
 tag: Sistema

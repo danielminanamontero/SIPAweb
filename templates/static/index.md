@@ -3,6 +3,7 @@ titulo: SIPA Identity
 nombre_sitio: Daniel Miñana Montero
 rol: FullStack & Cybersecurity
 subtitulo: Sistema de Identificación Personal Autorizada
+hero_bg: img/avatargithub.png
 experiencia: +20 años
 perfil_a: Mimod Bland
 perfil_b: Tovid Dfrei

@@ -1,7 +1,27 @@
 {
     "index": {
-        "file_hash": "2d2ac99395846547a9f838b2bd4f39ec7a84ca84358911fd0af3b2279afea205",
-        "dir_hash": "83d5764466477b23bc12d0d4f94ab72b867f853c2144eb1535bf197b430e1103",
-        "last": "2026-02-14T18:38:19.298880"
+        "file_hash": "157db983e9587fbf312e183a153c5e0b08d754f56a6e793681309dc495f055ca",
+        "dir_hash": "fce662a12a9c72398e061f7e08bb72f80e15a81fc1928f3f43d766fa9b309b0a",
+        "last": "2026-02-15T17:38:07.834245"
+    },
+    "sobre-mi": {
+        "file_hash": "93ae14ba8c00e241d092d3f81abb94f73bf6121646374c0446e4517fa8901c38",
+        "dir_hash": "b13f3ad90c6df760602f2291ff28ccd58789687299f3b643b12fbc0cc8cfe051",
+        "last": "2026-02-15T17:38:07.836713"
+    },
+    "proyectos": {
+        "file_hash": "f8bc4ed9e077e4bc2423720d8eb5fca6eb524b066a611e1ad3d79702e2ec8fe7",
+        "dir_hash": "c640fd7c28c1f95f04c5a79f3ee6486e495334132cd79dba26d9c53ff262d561",
+        "last": "2026-02-15T17:38:07.838777"
+    },
+    "contacto": {
+        "file_hash": "ceb2b928e1931c5ebe9ac3fcdeaba64b709c0252055a793c93da423475bbeb73",
+        "dir_hash": "142a40c92ee450ff0384140aa7557f1b3718d5470c3701cddff13d6813601d27",
+        "last": "2026-02-15T17:38:07.841025"
+    },
+    "ayuda": {
+        "file_hash": "08e3dbcff117769b37ee1a418156e537d07558738d35ce15b1e17b6edfbb9a82",
+        "dir_hash": "cd246cecd4975f29cd4a7627c5992c3fe11e2b7337d40827314d93f4ac9fb3b9",
+        "last": "2026-02-15T17:38:07.843399"
     }
 }

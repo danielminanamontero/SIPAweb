@@ -97,14 +97,14 @@ Hito 2 A : Confeccionar página a página
   - [x] Definir iconos
   - [x] Definir bloques
   - [x] Definir contenido
-- [ ] Enlace de todas con todas, a través de una barra navegación fija
-- [ ] Enlace de los proyectos en el pie según perfil tovid o mimod
+- [x] Enlace de todas con todas, a través de una barra navegación fija
+- [x] Enlace de los proyectos en el pie según perfil tovid o mimod
 - [ ] Diseño estructura, acciones, contenido de sobre-mi.html
 - [ ] Diseño estructura, acciones, contenido de proyectos.html
 - [ ] Diseño estructura, acciones, contenido de contacto.html
 - [ ] Diseño estructura, acciones, contenido de ayuda.html
 
-[] Cierre proyecto SIPAweb versión 1.0
+[] Cierre proyecto SIPAweb versión 1.5
 
 ### Proyecto conjunto con SIPA_PROJECT
 
