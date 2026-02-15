@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SIPAweb - Identidad Digital Automática de Daniel Miñana">
-    <title>{{ titulo }} | SIPAweb</title>
+    <title>Proyectos | SIPAweb</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <header class="hero-sipa" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('{{ hero_bg | default('img/avatargithub.png') }}');">
+    <header class="hero-sipa" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('img/proyectos-bg.png');">
         <nav class="container">
             <ul>
                 <li>
                     <a href="index.html" class="logo-container">
                         <i class="ph ph-cpu logo-icon"></i> 
-                        <span class="logo-text">{{ nombre_sitio | default('SIPA') }}</span>
+                        <span class="logo-text">SIPAweb</span>
                     </a>
                 </li>
             </ul>
@@ -28,28 +28,30 @@
         </nav>
 
         <div class="hero-content container">
-            <h1>{{ titulo }}</h1>
-            <p class="hero-intro">{{ subtitulo }}</p>
+            <h1>Proyectos</h1>
+            <p class="hero-intro">Más de 20 años de evolución IT</p>
         </div>
     </header>
 
     <main class="container">
         <div id="app-content">
-            {{ contenido | safe }}
+            <h1>Mis proyectos</h1>
+<p>Este es el espacio para tu presentación proyectos.</p>
 
             <div class="bento-grid">
-                {% for bloque in bloques %}
+                
                 <article class="bloque-card">
-                    <i class="ph {{ bloque.icono }}" style="font-size: 2rem; color: var(--primary);"></i>
-                    <h3>{{ bloque.titulo }}</h3>
+                    <i class="ph ph-briefcase" style="font-size: 2rem; color: var(--primary);"></i>
+                    <h3>Proyectos Destacados</h3>
                     <div class="card-body">
-                        {{ bloque.contenido | safe }}
+                        <h1>PROYECTOS</h1>
+<p>Usa este bloque como plantilla para tus tablas proyectos.</p>
                     </div>
-                    {% if bloque.enlace and bloque.enlace != '#' %}
-                    <a href="{{ bloque.enlace }}" class="outline">Saber más</a>
-                    {% endif %}
+                    
+                    <a href="'#'" class="outline">Saber más</a>
+                    
                 </article>
-                {% endfor %}
+                
             </div>
         </div>
     </main>

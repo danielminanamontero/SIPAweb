@@ -2,7 +2,7 @@
 id: Sobre-mi
 icono: ph-user-focus
 titulo: Identidad dual
-enlace: index.html
+enlace: sobre-mi.html
 orden: 1
 estado: En prueba
 tag: Perfil

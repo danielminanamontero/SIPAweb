@@ -1,8 +1,8 @@
 /**
- * SIPAweb Design System v1.3.5
+ * SIPAweb Design System v1.5.0
  * ----------------------------
  * Autor: Daniel Miñana (Artesano IT)
- * Descripción: Control de Identidad Digital, Hero Section y Bento Grid.
+ * Descripción: Control de Identidad Digital con Hero Dinámico.
  * Estándar: Compatible con Pico.css (Sobrescribe contenedores y espaciado).
  */
 
@@ -32,8 +32,8 @@ main.container {
 /* --- HERO SECTION (Identidad Visual) --- */
 
 .hero-sipa {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), 
-                url('../img/avatargithub.png');
+    /* La imagen se gestiona ahora por inline-style en base.html para ser dinámica */
+    /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('../img/avatargithub.png'); */
     background-size: cover;
     background-position: center;
     min-height: 60vh;
@@ -153,7 +153,6 @@ nav {
     padding: 0 !important;
 }
 
-/* Bloque crítico: Esto elimina el cuadrado inyectado por Pico */
 .footer-links li::before {
     display: none !important;
     content: "" !important;
