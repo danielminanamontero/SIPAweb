@@ -1,27 +1,27 @@
 {
     "index": {
-        "file_hash": "157db983e9587fbf312e183a153c5e0b08d754f56a6e793681309dc495f055ca",
-        "dir_hash": "fce662a12a9c72398e061f7e08bb72f80e15a81fc1928f3f43d766fa9b309b0a",
-        "last": "2026-02-15T16:49:43.881896"
+        "file_hash": "aaa909d5567b0e9978788a921627b3f1f2f783b0804f63ea96501fe45d52bd1a",
+        "dir_hash": "d92b719bd33187bd01af8c82efc54713e8387c01ae4006e72b2bf66ae562921c",
+        "last": "2026-02-17T09:31:10.571413"
     },
     "sobre-mi": {
-        "file_hash": "93ae14ba8c00e241d092d3f81abb94f73bf6121646374c0446e4517fa8901c38",
-        "dir_hash": "b13f3ad90c6df760602f2291ff28ccd58789687299f3b643b12fbc0cc8cfe051",
-        "last": "2026-02-15T16:49:43.883479"
+        "file_hash": "335641d2b7b80a6f26cd80ebc0be82b66ce7a4d7dd3185fd1b752c8f69f4a824",
+        "dir_hash": "f64d8509878745fa961771b46c2dcea81f89bf7b5e414b56f09d4bfeb30582e9",
+        "last": "2026-02-17T09:31:10.574290"
     },
     "proyectos": {
         "file_hash": "f8bc4ed9e077e4bc2423720d8eb5fca6eb524b066a611e1ad3d79702e2ec8fe7",
-        "dir_hash": "c640fd7c28c1f95f04c5a79f3ee6486e495334132cd79dba26d9c53ff262d561",
-        "last": "2026-02-15T16:49:43.884832"
+        "dir_hash": "4b4ba0f9f313042b7935190795355aefb03e8a17b3c5c3a02cbb1ae08e8557fa",
+        "last": "2026-02-17T09:31:10.576765"
     },
     "contacto": {
         "file_hash": "ceb2b928e1931c5ebe9ac3fcdeaba64b709c0252055a793c93da423475bbeb73",
-        "dir_hash": "142a40c92ee450ff0384140aa7557f1b3718d5470c3701cddff13d6813601d27",
-        "last": "2026-02-15T16:49:43.886318"
+        "dir_hash": "a69fcbe2df18970741f9f779fe47adcc0b45367e4293c01dc7231e15a7656f25",
+        "last": "2026-02-17T09:31:10.578166"
     },
     "ayuda": {
         "file_hash": "08e3dbcff117769b37ee1a418156e537d07558738d35ce15b1e17b6edfbb9a82",
-        "dir_hash": "cd246cecd4975f29cd4a7627c5992c3fe11e2b7337d40827314d93f4ac9fb3b9",
-        "last": "2026-02-15T16:49:43.887611"
+        "dir_hash": "023b983f7e259a8cdf4e8db7c4a8010af591947b95e214b1e67f7b8274a7a3be",
+        "last": "2026-02-17T09:31:10.579712"
     }
 }

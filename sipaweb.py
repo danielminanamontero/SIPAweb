@@ -80,19 +80,18 @@ class SipaFileIndex(SipaModule):
             os.makedirs(os.path.dirname(self.file_path), exist_ok=True)
             content = (
                 "---\n"
-                "titulo: SIPA Identity\n"
-                "nombre_sito: Nombre del Sitio\n"
-                "rol: FullStack & Cybersecurity\n"
-                "subtitulo: SIPA Identity\n"
+                "titulo: Hola, soy Daniel\n"
+                "nombre_sito: Daniel Miñana Montero\n"
+                "rol: Propietario\n"
+                "subtitulo: Cuándo la tecnología está en tú ADN.\n"
                 "hero_bg: img/avatargithub.png\n"
                 "experiencia: +20 años\n"
-                "perfil_a: Mimod Bland\n"
-                "perfil_b: Tovid Dfrei\n"
                 "estado: Protegido\n"
-                "tag: Core\n"
+                "tag: Presentación\n"
                 "---\n"
-                "# Bienvenido a SIPAweb\n\n"
-                "Este es el núcleo de tu identidad digital generado automáticamente."
+                "# La convergencia entre experiencia e innovación\n\n"
+                "Os invito a navegar por este sitio para poder conocerme un poquito mejor, en el no solo vuelco mi trayectoria profesional y formativa, presento mis habilidades, os enseño mi trabajo, y sobre todo recopilo mi conocimiento, tras bastante tiempo intentandolo he conseguido preparar este sistema propio que construye este sitio automáticamente, y presenta quién soy en profundidad.\n"
+                "Gracias por visitarme, Daniel\n"
             )
             with open(self.file_path, "w", encoding="utf-8") as f: f.write(content)
 
@@ -323,7 +322,9 @@ class SipaWebBuilder:
         activos = [
             ("", "base.html", self.templates),
             ("", "custom.css", os.path.join(self.raiz, "css")),
-            ("img", "avatargithub.png", os.path.join(self.raiz, "img")) # Subcarpeta 'img'
+            ("img", "avatargithub.png", os.path.join(self.raiz, "img")),
+            ("img", "sobre-mi-bg.png", os.path.join(self.raiz, "img")),
+            ("pdf", "2018_porfolio.pdf", os.path.join(self.raiz, "pdf"))
         ]
         
         for subfolder, nombre, destino_folder in activos:
