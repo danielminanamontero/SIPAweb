@@ -1,7 +1,7 @@
 ---
 titulo: Sobre Mí
 nombre_sitio: SIPAweb
-rol: Trayectoria Profesional
+rol: Perfil profesional
 subtitulo: Más de 20 años de evolución IT
 hero_bg: img/sobre-mi-bg.png
 estado: Protegido
