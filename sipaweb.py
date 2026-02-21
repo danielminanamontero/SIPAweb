@@ -181,7 +181,7 @@ class SipaFileProyectos(SipaModule):
             content = (
                 "---\n"
                 "titulo: Proyectos\n"
-                "nombre_sitio: SIPAweb\n"
+                "nombre_sitio: Daniel Miñana Montero\n"
                 "rol: Trayectoria Profesional\n"
                 "subtitulo: Más de 20 años de evolución IT\n"
                 "hero_bg: img/proyectos-bg.png\n" # Ruta preparada para tu nueva imagen
@@ -189,7 +189,14 @@ class SipaFileProyectos(SipaModule):
                 "tag: Proyectos\n"
                 "---\n"
                 "# Mis proyectos\n\n"
-                "Este es el espacio para tu presentación proyectos."
+                "Bienvenido a mi rincón de pensar, y no habló en plan paradójico, es así, ante estos documentos, códigos, imágenes, paso gran parte de mi tiempo, disfruto imaginando posibilidades y proponiéndome retos técnicos o nuevos aprendizajes que me podría venir bien, bueno os he presentado mi espacio de proyectos, ahora quiero hacer hincapié en uno fundamentalmente, y en sus ramificaciones, hablamos de SIPA como mi proyecto principal desde hace unos meses y que tras una fase de rediseño y optimización en enero, decidí priorizar el despliegue de SIPAweb como la cara visible de un ecosistema mucho más profundo.\n\n"
+                "Ahora sí, mi proyecto SIPA (Sistema de Identificación Personal Autorizada). Si queréis consultar más en profundidad alguno de los proyectos, los bloques a continuación os enlazan a sus páginas específicas; también aprovecho y os animo a dejar cualquier comentario constructivo a través de la página de contacto.\n\n"
+                "## Proyecto SIPA, módulo SIPAweb\n\n"
+                "Bienvenido a **SIPAweb**, el núcleo digital de mi identidad profesional. Este espacio no es solo una web; es un ecosistema automatizado diseñado para gestionar y proyectar una trayectoria de más de dos décadas en el sector tecnológico. Como característica o una de ellas fundamental, la construcción del sitio web se realiza de forma autónoma desde ficheros markdown que son procesados automáticamente al detectar modificaciones en los ficheros; se renueva su hash y se construye nuevamente el fichero .html.\n\n"
+                "### ¿Qué es SIPA?\n\n"
+                "El **Sistema de Identificación Personal Autorizada (SIPA)** nace de la necesidad de unificar mi perfil profesional bajo un estándar de integridad y transparencia. Es el motor que destila años de administración de sistemas, redes y soporte técnico hacia el nuevo paradigma de la automatización y la ciberseguridad.\n\n"
+                "### ¿Qué es SIPAweb?\n\n"
+                "Es la implementación física de esta visión. Un sistema **automático, gratuito y resiliente** que transforma documentos Markdown en una presencia web profesional. Construido bajo la filosofía *Plug & Play*, SIPAweb garantiza que mi perfil esté siempre actualizado, auditado y listo para los retos del futuro digital.\n"
             )
             with open(self.file_path, "w", encoding="utf-8") as f: f.write(content)
 
@@ -300,6 +307,138 @@ class SipaFileAyuda(SipaModule):
             )
             with open(bloque_path, "w", encoding="utf-8") as f: f.write(bloque_content)
 
+class SipaFilePost(SipaModule):
+    """
+    MOTOR EDITORIAL INTEGRADO: Respeta el estándar de rutas de SipaModule.
+    Todo el trabajo MD ocurre en templates/static/posts/
+    Todo el resultado HTML ocurre en /posts/
+    """
+    def __init__(self, page_name, base_path, builder):
+        super().__init__(page_name, base_path)
+        self.builder = builder
+        
+        # Rutas de origen (donde escribes y mueves MDs)
+        self.process_folder = os.path.join(self.folder_path, "process")
+        self.public_folder = os.path.join(self.folder_path, "public")
+        
+        # Ruta de destino real (donde vive la web)
+        self.output_folder = os.path.join(self.builder.raiz, "posts")
+
+    def provision(self):
+        """Crea la estructura física del módulo."""
+        os.makedirs(self.process_folder, exist_ok=True)
+        os.makedirs(self.public_folder, exist_ok=True)
+        os.makedirs(self.output_folder, exist_ok=True)
+        
+        ejemplo_path = os.path.join(self.process_folder, "00-plantilla-post.md")
+        if not os.listdir(self.process_folder) and not os.listdir(self.public_folder):
+            content = (
+                "---\n"
+                "titulo: Implementación de Módulos SIPA\n"
+                "subtitulo: Guía técnica sobre la arquitectura de datos estáticos\n"
+                "estado: proceso\n"
+                "fecha_creacion: 2026-02-21\n"
+                "fecha_publicacion: pendiente\n"
+                "tag: python, arquitectura, web\n"
+                "tipo: post\n"
+                "autor: Daniel Miñana\n"
+                "---\n\n"
+                "# Introducción\n"
+                "Este es el contenido del post.\n\n"
+                "## Desarrollo Técnico\n"
+                "Aquí probaremos el despliegue de código:\n"
+                "```python\n"
+                "print('SIPAweb activo')\n"
+                "```\n\n"
+                "## Conclusión\n"
+                "Finalización del documento."
+            )
+            with open(ejemplo_path, "w", encoding="utf-8") as f: f.write(content)
+            print(f"[*] Semilla creada en: {self.process_folder}")
+
+    def _procesar_md(self, ruta):
+        """Extracción limpia de metadatos y cuerpo."""
+        try:
+            with open(ruta, 'r', encoding='utf-8') as f:
+                contenido = f.read()
+            partes = contenido.split('---', 2)
+            if len(partes) >= 3:
+                meta_raw = partes[1].strip()
+                metadatos = {l.split(":",1)[0].strip(): l.split(":",1)[1].strip().strip('"') 
+                            for l in meta_raw.split('\n') if ":" in l}
+                return metadatos, partes[2].strip()
+            return {}, contenido
+        except Exception as e:
+            print(f"[X] Error MD: {e}")
+            return {}, ""
+
+    def ejecutar_ciclo_editorial(self):
+        """Renderizado final de posts públicos con sincronización de anclajes TOC."""
+        # Aseguramos infraestructura
+        self.provision() 
+
+        if not os.path.exists(self.public_folder):
+            return
+
+        files = [f for f in os.listdir(self.public_folder) if f.endswith(".md")]
+        for filename in files:
+            ruta_md = os.path.join(self.public_folder, filename)
+            meta, texto = self._procesar_md(ruta_md)
+            
+            # 1. Extracción del TOC con normalización de IDs segura
+            lineas = texto.split('\n')
+            indice_dinamico = []
+            for linea in lineas:
+                # Solo procesamos si la línea empieza por # (evitando # dentro de bloques de código)
+                if linea.startswith('#'):
+                    nivel = linea.count('#')
+                    if nivel <= 6:  # Solo consideramos hasta h6
+                        titulo = linea.replace('#', '').strip()
+                        
+                        # NORMALIZACIÓN AGRESIVA: Sincroniza con la extensión 'toc' de Markdown
+                        import re
+                        # Pasamos a minúsculas, quitamos caracteres no alfanuméricos y cambiamos espacios por guiones
+                        anchor = titulo.lower()
+                        anchor = re.sub(r'[^\w\s-]', '', anchor) # Quita puntos, comas, etc.
+                        anchor = re.sub(r'[\s]+', '-', anchor).strip('-') # Espacios a guiones
+                        
+                        indice_dinamico.append({
+                            'nivel': nivel,
+                            'titulo': titulo,
+                            'anchor': anchor
+                        })
+
+            # 2. Renderizado con IDs automáticos en los headers (h1, h2, h3)
+            # La extensión 'toc' asegura que el HTML tenga los <h2 id="ancla"> correspondientes
+            cuerpo_html = markdown.markdown(texto, extensions=['extra', 'codehilite', 'toc'])
+
+            # 3. Automatismo de bloques de código colapsables
+            cuerpo_html = cuerpo_html.replace(
+                '<div class="codehilite">', 
+                '<details class="code-accordion"><summary>Ver Bloque de Código</summary><div class="codehilite">'
+            ).replace('</pre></div>', '</pre></div></details>')
+
+            # 4. Preparación del Contexto
+            contexto = {
+                "contenido": cuerpo_html,
+                "base_path": "../",
+                "toc": indice_dinamico,
+                **meta
+            }
+
+            try:
+                template = self.builder.env.get_template('post.html')
+                html_final = template.render(**contexto)
+                out_name = filename.replace(".md", ".html")
+                
+                # Guardado en ruta de publicación real
+                ruta_salida = os.path.join(self.output_folder, out_name)
+                with open(ruta_salida, "w", encoding="utf-8") as f:
+                    f.write(html_final)
+                print(f"[!] ÉXITO Editorial: {out_name} (TOC: {len(indice_dinamico)} niveles)")
+            except Exception as e:
+                print(f"[X] Error en renderizado de {filename}: {e}")
+
 class SipaWebBuilder:
     """
     ORQUESTADOR: Provisión de activos core, lectura de MD y renderizado.
@@ -312,6 +451,7 @@ class SipaWebBuilder:
         self.raiz = os.path.dirname(os.path.abspath(__file__))
         self.static = os.path.join(self.raiz, "templates", "static")
         self.templates = os.path.join(self.raiz, "templates")
+        self.data_public = os.path.join(self.raiz, "data", "public")   # Listos para publicar
         
         # Sincronización de activos (base.html y custom.css)
         self.asegurar_activos_core()
@@ -331,11 +471,13 @@ class SipaWebBuilder:
         # Mapeo: (Subruta_Origen, Nombre_Fichero, Carpeta_Destino)
         activos = [
             ("", "base.html", self.templates),
+            ("", "post.html", self.templates),
             ("", "custom.css", os.path.join(self.raiz, "css")),
             ("img", "avatargithub.png", os.path.join(self.raiz, "img")),
             ("img", "sobre-mi-bg.png", os.path.join(self.raiz, "img")),
             ("img", "favicon.ico", os.path.join(self.raiz, "img")), # Nuevo: Favicon
             ("img", "danielminanamontero-logo.png", os.path.join(self.raiz, "img")), # Nuevo: Tu logo azul
+            ("img", "proyectos-bg.png", os.path.join(self.raiz, "img")),
             ("pdf", "2018_porfolio.pdf", os.path.join(self.raiz, "pdf"))
         ]
         
@@ -416,6 +558,10 @@ class SipaWebBuilder:
 
             except Exception as e:
                 print(f"[X] ERROR en {mision['out']}: {e}")
+
+        # NUEVO: Encapsulación total
+        post_mgr = SipaFilePost("posts", self.static, self)
+        post_mgr.ejecutar_ciclo_editorial()
 
         print(f"\n--- Construcción Global v1.5 Finalizada ---")
 
