@@ -99,7 +99,7 @@ Hito 2 A : Confeccionar página a página
   - [x] Definir contenido
 - [x] Enlace de todas con todas, a través de una barra navegación fija
 - [x] Enlace de los proyectos en el pie según perfil tovid o mimod
-- [ ] Diseño estructura, acciones, contenido de sobre-mi.html
+- [x] Diseño estructura, acciones, contenido de sobre-mi.html
 - [ ] Diseño estructura, acciones, contenido de proyectos.html
 - [ ] Diseño estructura, acciones, contenido de contacto.html
 - [ ] Diseño estructura, acciones, contenido de ayuda.html

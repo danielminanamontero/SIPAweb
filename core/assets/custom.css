@@ -1,5 +1,5 @@
 /**
- * SIPAweb Design System v1.5.0
+ * SIPAweb Design System v1.5.1
  * ----------------------------
  * Autor: Daniel Miñana (Artesano IT)
  * Descripción: Control de Identidad Digital con Hero Dinámico.
@@ -32,8 +32,6 @@ main.container {
 /* --- HERO SECTION (Identidad Visual) --- */
 
 .hero-sipa {
-    /* La imagen se gestiona ahora por inline-style en base.html para ser dinámica */
-    /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('../img/avatargithub.png'); */
     background-size: cover;
     background-position: center;
     min-height: 60vh;
@@ -185,4 +183,146 @@ nav {
 .btn-cv-azul:hover {
     border-color: var(--primary);
     background-color: rgba(57, 255, 20, 0.1);
+}
+
+/* ==========================================================================
+   SECCIÓN EDITORIAL: post.html & time.html
+   ========================================================================== */
+
+/* 1. Cabecera Minimalista (10% Vertical) */
+/* NOTA: Se ha añadido display: flex y justify-content para alinear extremos */
+.header-minimal {
+    position: fixed; /* Tarea: Fijo en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    min-height: 80px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Tarea: Logo izquierda, Nav derecha */
+    background-color: #14171a; 
+    border-bottom: none; /* Eliminado para usar el hero de fondo como borde natural */
+    padding: 0 var(--block-spacing-horizontal); /* Sincronía con el margen de Pico */
+    z-index: 1000;
+}
+
+.header-minimal nav {
+    margin-bottom: 0;
+    justify-content: right;
+}
+
+/* 2. Layout Principal de Documento (30/70) */
+/* CAMBIO CRÍTICO: Se usa 'fr' en vez de '%' para absorber el 'gap' sin desbordar */
+.grid-document {
+    display: grid;
+    grid-template-columns: 3fr 7fr; /* Tarea: Proporción técnica estable */
+    gap: 3rem;
+    min-height: 80vh;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* 3. Sidebar Izquierda (Meta-datos y TOC) */
+.sidebar-meta {
+    position: sticky;
+    top: 12vh; /* Se mantiene visible tras el header fijo */
+    height: fit-content;
+    padding-right: 1.5rem;
+    border-right: 1px solid var(--muted-border-color); 
+}
+
+.sidebar-meta .file-data h6 {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+/* 4. Cuerpo del Documento (Derecha) */
+.content-body {
+    padding-bottom: 5rem;
+    line-height: 1.7; 
+}
+
+.content-body h1, .content-body h2 {
+    scroll-margin-top: 12vh; 
+}
+
+/* 5. Responsive: Colapso en Tablet/Móvil */
+@media (max-width: 992px) {
+    .grid-document {
+        grid-template-columns: 100%;
+    }
+    .sidebar-meta {
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--muted-border-color);
+        padding-bottom: 2rem;
+    }
+}
+
+/* 6. Compensación de scroll para el header fijo */
+.doc-layout {
+    margin-top: 10vh;
+    padding-left: var(--block-spacing-horizontal);
+    padding-right: var(--block-spacing-horizontal);
+}
+
+/* Sidebar con Scroll Independiente */
+.sidebar-meta {
+    position: sticky;
+    top: 12vh;
+    height: 85vh;
+    overflow-y: auto; /* Permite scroll si el TOC es largo */
+    padding-right: 1rem;
+}
+
+/* Estilo del Acordeón de Código */
+details.code-accordion {
+    border: 1px solid #30363d;
+    background: #0d1117;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+details.code-accordion summary {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none;
+    font-weight: bold;
+}
+
+details.code-accordion summary::before {
+    content: "➣ ";
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+details[open].code-accordion summary::before {
+    transform: rotate(90deg);
+}
+
+/* Clases de sangrado para el menú */
+.toc-nivel-1 { margin-left: 0; font-weight: bold; }
+.toc-nivel-2 { margin-left: 1rem; }
+.toc-nivel-3 { margin-left: 1.5rem; font-size: 0.9rem; }
+.toc-nivel-4 { margin-left: 2rem; font-size: 0.85rem; opacity: 0.8; }
+.toc-nivel-5 { margin-left: 2.5rem; font-size: 0.8rem; opacity: 0.7; }
+.toc-nivel-6 { margin-left: 3rem; font-size: 0.75rem; opacity: 0.6; }
+
+.toc-menu ul { list-style: none; padding: 0; }
+.toc-menu li { margin-bottom: 0.5rem; }
+
+/* Solo afecta a las páginas de Documentación (post.html / time.html) */
+.doc-layout {
+    scroll-padding-top: 12vh;
+}
+
+/* Si usas navegación por IDs, esto asegura que el salto sea fluido */
+.doc-layout :target {
+    scroll-margin-top: 12vh;
 }
