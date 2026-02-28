@@ -575,6 +575,168 @@ Pregunta del usuario: "Ante la transición a páginas específicas, ¿por dónde
 
 Pregunta: No, lo primero vamos a dejar esta bitácora en pausa, y vamos abrir otra para realizar los cambios y creaciones que necesitamos, esta es exclusiva para proyectos.html y lo que estamos tratando es estructura del sistema, sipaweb.py.
 
+---
+
+**Pregunta** Retomada esta bitácora para completarla, ya tenemos disponibles las páginas post.html y time.html, por lo tanto el enlace al index de los los ya lo tenemos se llama list_posts.html y esta en posts/, por lo tanto podemos completar proyectos.html y pasar a cerrar sobre-mi.
+
+- Lo primero mostrar la estructura de datos que va ha quedar:
+
+```bash
+tree templates/
+templates/
+├── base.html
+├── post.html
+├── static
+│   ├── ayuda
+│   │   └── 01_Ayuda.md
+│   ├── ayuda.md
+│   ├── contacto
+│   │   └── 01_Contacto.md
+│   ├── contacto.md
+│   ├── index
+│   │   ├── 01_sobre-mi.md
+│   │   ├── 02_proyectos.md
+│   │   ├── 03_ayuda.md
+│   │   ├── 04_bitacora.md # enlaza a list_posts.html - ok
+│   │   └── 05_seguridad.md
+│   ├── index.md
+│   ├── posts
+│   │   ├── process
+│   │   │   ├── 00-plantilla-post.md
+│   │   │   ├── 01-bitacora-sipaweb.md
+│   │   │   ├── bitacora_sipaweb_extruc_data.md
+│   │   │   ├── error-apagado-ubuntu-24-04-4.md
+│   │   │   ├── formativa # Nueva carpeta para ficheros con experiencias formativas .md - ok
+│   │   │   ├── laboral # Nueva carpeta para ficheros con experiencias laborales .md - ok
+│   │   │   ├── test_2.md
+│   │   │   └── test.md
+│   │   └── public # Vacío public para crear un primer post, estoy decidiendo - ok
+│   ├── proyectos
+│   │   ├── 01_sobre-mi.md
+│   │   ├── 02_bitacora.md # enlaza a list_posts.html - ok
+│   │   ├── 03_proyectos.md # enlaza a list_posts.html - ok
+│   │   └── sipa.md # Lo quito de los bloques de proyectos y se convertira en un post enlace al repositorio tovid - ok
+│   ├── proyectos.md
+│   ├── sobre-mi
+│   │   ├── 01_proyectos.md
+│   │   ├── 02_trayectoria_profesional.md # Pendiente preparar
+│   │   ├── 03_trayectoria_formativa.md # Pendiente preparar
+│   │   └── bitacora.md # Lo quito de sobre-mi no tiene lógica - ok
+│   └── sobre-mi.md
+└── time.html
+
+12 directories, 29 files
+```
+
+- Así voy a dejar la estructura los comentarios marcan la creación de las carpetas para preparar los post de cronologia formativa y profesional - ok
+- Volvemos al punto que nos hizo tener este parón, crearé el repositorio SIPA en tovid y enlazaremos este post con el repositorio
+- Estoy pensando que el primer post sería poner bonita el acta fundación de SIPAweb y publicarlo - ok
+- Revisar ayuda, enlace a index de momento - ok
+- Incluir el enlace a contacto.html
+- Revisar el Readme
+
+---
+
+Registro de Sesión | **Reestructuración de Activos y Despliegue v1.6.6**
+
+- Daniel, bienvenido de nuevo al taller. El mapa de directorios que has trazado es la definición de un sistema maduro. Estás pasando de tener archivos sueltos a una arquitectura de carpetas que permitirá al motor SIPA clasificar el contenido de forma automática por su origen (laboral, formativa, process).
+
+- Análisis de la Nueva Estructura
+  - La inclusión de las carpetas posts/process/formativa y posts/process/laboral es clave.
+    - **Lógica de Negocio**: Cuando sipaweb.py recorra estas rutas, el metadato tipo se asignará casi por herencia de carpeta, lo que hará que tu list_posts.html sepa perfectamente qué es una tarjeta de "Experiencia Laboral" y qué es una "Bitácora".
+
+- Tareas de Limpieza Confirmadas:
+  - Bitácora: Centralizada en list_posts.html (adiós a la redundancia en sobre-mi).
+  - Proyectos: El archivo sipa.md se eleva a la categoría de Post Fundacional, vinculándolo a tu repositorio en GitHub. Es una excelente decisión de marca personal.
+
+- El Acta Fundacional: Tu primer "Post Real"
+  - Publicar el acta de fundación de SIPAweb como primer post es un movimiento maestro de storytelling.
+  - Sugerencia para el Acta: Usa el formato de post.html. Al ser un documento "histórico" para tu proyecto, los niveles de título (#, ##) generarán un TOC lateral que le dará un aspecto de documentación técnica oficial de alto nivel.
+
+- Verificación de Enlaces y Rutas (Evitando 404)
+  - Para que la navegación sea fluida antes de cerrar, asegúrate de que los bloques en los ficheros .md de la carpeta index/ tengan estas rutas:
+
+| Bloque    | Enlace en el .md                         | Destino Final                                  |
+|-----------|------------------------------------------|------------------------------------------------|
+| Bitácora  | `[Ver Bitácora](posts/list_posts.html)`  | Índice cronológico (time.html)                 |
+| Proyectos | `[Ver Proyectos](posts/list_posts.html)` | (Por ahora al mismo índice, filtrable después) |
+| Contacto  | `[Contacto](contacto.html)`              | Página de formulario/redes                     |
+| Ayuda     | `[Ayuda](index.html)`                    | Retorno al inicio (Temporal)                   |
+
+- El Repositorio SIPA y el README
+  - Al crear el repositorio en GitHub, el README.md debería reflejar esta estructura técnica que hemos construido. No es solo un sitio web; es un Generador de Sitios Estáticos (SSG) basado en Python y Jinja2.
+
+- Próximos pasos operativos:
+  - Mover los archivos: Reubicar los .md según tu nuevo árbol de directorios.
+  - Preparar el Acta: Crear acta-fundacion-sipaweb.md en posts/public.
+  - Ejecución de Control: Lanzar sipaweb.py para verificar que el acumulador lee correctamente las nuevas subcarpetas (laboral/, formativa/).
+
+- ¿Te parece si revisamos el contenido del README para que proyecte esa imagen de "Artesano IT" que estamos construyendo antes de que hagas el primer push al repositorio? Solo dime qué puntos quieres destacar y le damos forma.
+
+**Pregunta** Voy avanzando en la reorganización y creación de lo que llamaremos el estandar del site, pero he detectado un error bastante sutil pero muy perjudicial. Al repasar los niveles de los ficheros markdown los niveles que en su contenido tienen una palabra con acento ya no se la puede enlazar en el html entre las dos columnas, lo acabo de probar con el acta, misión y mision una si y la otra no, cuando parseamos el fichero no parseamos los acentos, lo revisamos por fa.
+
+---
+
+Registro de Sesión | **Depuración de Codificación y Slugify v1.6.7**
+
+- Daniel, has dado en el clavo. Es el clásico error de normalización de caracteres. El problema es que al generar el "ancla" (el ID en el HTML), estamos eliminando o transformando los caracteres especiales de forma inconsistente entre el menú lateral (TOC) y el cuerpo del texto.
+
+- En español, para que un enlace como #misión sea robusto, lo estándar es "limpiar" el texto: quitar acentos y convertir la ñ en n.
+
+- La Solución en sipaweb.py
+  - Debemos actualizar la lógica de generación del anchor dentro de ejecutar_ciclo_editorial. Vamos a usar una técnica más profesional para eliminar tildes.
+  - Busca la sección donde generas el anchor y sustitúyela por esta (necesitaremos importar unicodedata al principio del archivo):
+
+```python
+import unicodedata
+import re
+
+# ... dentro de tu bucle de títulos ...
+titulo = linea_clean.replace('#', '').strip()
+
+# NORMALIZACIÓN PROFESIONAL (Slugify)
+# 1. Convertir a minúsculas
+anchor = titulo.lower()
+# 2. Quitar acentos (Misión -> Mision)
+anchor = unicodedata.normalize('NFKD', anchor).encode('ascii', 'ignore').decode('ascii') # Esta línea lo ha solucionado todo
+# 3. Quitar caracteres raros y poner guiones en espacios
+anchor = re.sub(r'[^\w\s-]', '', anchor)
+anchor = re.sub(r'[\s]+', '-', anchor).strip('-')
+
+indice_dinamico.append({
+    'nivel': nivel,
+    'titulo': titulo, # El título original (con acento) para mostrar en el menú
+    'anchor': anchor  # El ID limpio (sin acento) para el enlace técnico
+})
+```
+
+- Por qué esto arregla el Acta
+  - **El ID**: La sección "Misión" se convertirá en \<h2 id="mision">.
+  - **El Enlace**: El menú lateral apuntará a \<a href="#mision">.
+  - **El Resultado**: Al no haber caracteres especiales en el atributo id, el navegador no se confunde con la codificación de la URL.
+
+- Verificación de la Codificación (UTF-8)
+  - Asegúrate también de que al leer el archivo .md en Python estés forzando encoding='utf-8', de lo contrario, al encontrar una tilde, Python podría romper el proceso de lectura antes de llegar al parseo:
+
+```python
+# Cuando abras el MD para procesar:
+with open(ruta_md, 'r', encoding='utf-8') as f:
+    texto = f.read()
+```
+
+- Estado del Acta Fundacional
+  - Una vez apliques esta limpieza de acentos en el generador de anclas, el acta con Misión, Visión y Valores funcionará perfectamente en las dos columnas.
+
+- Próximo Paso
+  - Aplica este cambio en el sipaweb.py, regenera el sitio y comprueba el acta. Si los enlaces del lateral ya saltan correctamente a las secciones con tildes, habremos eliminado el último "bug" técnico de navegación.
+
+- ¿Te parece si después de esto revisamos el README del repositorio para dejar constancia de que el sistema ya soporta normalización de caracteres en español? Es un buen detalle técnico para presumir.
+
 #### Listado de proyectos, en proceso, parados, activos, preparar página y publicar
 
-#### Cerrada verificación exhaustiva, publicar proyectos.html
+- Cierro esta bitácora, esta preparada para tener un flujo de navegación correcta, proyectos.html es funcional no tiene enlaces perdidos, ya conecta con list_posts.html y desde ahí cierra la navegación.
+- El filtrado por estado todavía no ha sido aplicado, de momento el control lo gestiono yo creando contenido, en versiones siguientes mejoraremos fundamentalmente búsquedas y filtros según estado, según etiquetas, y algunos otros filtros que puedan ser útiles.
+- Verificación ortográfica realizada
+- Commit versión 1.4.6 proyectos.html, post.html, time.html
+
+#### Cerrada 28/02/2026 18:14:15

@@ -2,7 +2,7 @@
 id: Trayectoria profesional
 icono: ph-briefcase
 titulo: Currículum - Experiencia profesional
-enlace: '#'
+enlace: index.html
 orden: 1
 estado: Auditado
 tag: Currículum

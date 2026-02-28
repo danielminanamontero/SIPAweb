@@ -2,7 +2,7 @@
 id: Ayuda_ejemplo
 icono: ph-briefcase
 titulo: Ayuda Destacados
-enlace: '#'
+enlace: index.html
 orden: 1
 estado: Auditado
 tag: Profesional
