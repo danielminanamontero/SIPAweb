@@ -11,6 +11,7 @@ import os
 import hashlib
 import json
 import shutil
+import unicodedata
 from datetime import datetime
 
 class SipaModule:
@@ -373,52 +374,68 @@ class SipaFilePost(SipaModule):
             return {}, ""
 
     def ejecutar_ciclo_editorial(self):
-        """Renderizado final de posts públicos con sincronización de anclajes TOC."""
-        # Aseguramos infraestructura
+        """Renderizado de posts y generación automática del índice cronológico."""
+        # 1. Aseguramos infraestructura
         self.provision() 
 
         if not os.path.exists(self.public_folder):
             return
 
+        # --- PREPARACIÓN DEL ACUMULADOR ---
+        self.coleccion_posts = [] 
+        
         files = [f for f in os.listdir(self.public_folder) if f.endswith(".md")]
+        
+        # --- BUCLE INDIVIDUAL (Dentro del for) ---
         for filename in files:
             ruta_md = os.path.join(self.public_folder, filename)
             meta, texto = self._procesar_md(ruta_md)
             
-            # 1. Extracción del TOC con normalización de IDs segura
+            # A. Lógica de TOC (Anclajes y niveles)
             lineas = texto.split('\n')
             indice_dinamico = []
+            dentro_de_codigo = False 
+
             for linea in lineas:
-                # Solo procesamos si la línea empieza por # (evitando # dentro de bloques de código)
-                if linea.startswith('#'):
-                    nivel = linea.count('#')
-                    if nivel <= 6:  # Solo consideramos hasta h6
-                        titulo = linea.replace('#', '').strip()
-                        
-                        # NORMALIZACIÓN AGRESIVA: Sincroniza con la extensión 'toc' de Markdown
+                linea_clean = linea.strip()
+                if linea_clean.startswith('```'):
+                    dentro_de_codigo = not dentro_de_codigo
+                    continue 
+
+                if not dentro_de_codigo and linea_clean.startswith('#'):
+                    nivel = linea_clean.count('#')
+                    if nivel <= 6:
+                        titulo = linea_clean.replace('#', '').strip()
                         import re
-                        # Pasamos a minúsculas, quitamos caracteres no alfanuméricos y cambiamos espacios por guiones
                         anchor = titulo.lower()
-                        anchor = re.sub(r'[^\w\s-]', '', anchor) # Quita puntos, comas, etc.
-                        anchor = re.sub(r'[\s]+', '-', anchor).strip('-') # Espacios a guiones
+                        # 2. Quitar acentos (Misión -> Mision)
+                        anchor = unicodedata.normalize('NFKD', anchor).encode('ascii', 'ignore').decode('ascii')
+                        anchor = re.sub(r'[^\w\s-]', '', anchor)
+                        anchor = re.sub(r'[\s]+', '-', anchor).strip('-')
                         
                         indice_dinamico.append({
-                            'nivel': nivel,
-                            'titulo': titulo,
-                            'anchor': anchor
+                            'nivel': nivel, 'titulo': titulo, 'anchor': anchor
                         })
 
-            # 2. Renderizado con IDs automáticos en los headers (h1, h2, h3)
-            # La extensión 'toc' asegura que el HTML tenga los <h2 id="ancla"> correspondientes
+            # B. Renderizado Markdown y Wrapper de Código
             cuerpo_html = markdown.markdown(texto, extensions=['extra', 'codehilite', 'toc'])
-
-            # 3. Automatismo de bloques de código colapsables
             cuerpo_html = cuerpo_html.replace(
                 '<div class="codehilite">', 
                 '<details class="code-accordion"><summary>Ver Bloque de Código</summary><div class="codehilite">'
             ).replace('</pre></div>', '</pre></div></details>')
 
-            # 4. Preparación del Contexto
+            # C. ACUMULACIÓN DE DATOS (Para el índice futuro)
+            out_name = filename.replace(".md", ".html")
+            self.coleccion_posts.append({
+                "url": out_name,
+                "titulo": meta.get("titulo", "Sin título"),
+                "subtitulo": meta.get("subtitulo", ""),
+                "fecha": meta.get("fecha_creacion", "2026-01-01"),
+                "tipo": meta.get("tipo", "post"),
+                "tag": meta.get("tag", "")
+            })
+
+            # D. Renderizado del Post Individual
             contexto = {
                 "contenido": cuerpo_html,
                 "base_path": "../",
@@ -429,15 +446,38 @@ class SipaFilePost(SipaModule):
             try:
                 template = self.builder.env.get_template('post.html')
                 html_final = template.render(**contexto)
-                out_name = filename.replace(".md", ".html")
-                
-                # Guardado en ruta de publicación real
                 ruta_salida = os.path.join(self.output_folder, out_name)
                 with open(ruta_salida, "w", encoding="utf-8") as f:
                     f.write(html_final)
-                print(f"[!] ÉXITO Editorial: {out_name} (TOC: {len(indice_dinamico)} niveles)")
+                print(f"[!] ÉXITO Editorial: {out_name}")
             except Exception as e:
                 print(f"[X] Error en renderizado de {filename}: {e}")
+
+        # --- FASE FINAL (Fuera del bucle for) ---
+        # Solo si hemos acumulado algo, generamos el índice global
+        if self.coleccion_posts:
+            self.generar_indice_global()
+
+    def generar_indice_global(self):
+        """Construye list_posts.html usando la plantilla de cronología."""
+        # Ordenamos: lo más reciente arriba
+        self.coleccion_posts.sort(key=lambda x: x['fecha'], reverse=True)
+
+        contexto = {
+            "items": self.coleccion_posts,
+            "titulo_pagina": "Índice de Actividad",
+            "base_path": "../"
+        }
+
+        try:
+            template = self.builder.env.get_template('time.html')
+            html_final = template.render(**contexto)
+            ruta_salida = os.path.join(self.output_folder, "list_posts.html")
+            with open(ruta_salida, "w", encoding="utf-8") as f:
+                f.write(html_final)
+            print(f"[!] ÉXITO: Generado list_posts.html con {len(self.coleccion_posts)} registros.")
+        except Exception as e:
+            print(f"[X] Error en el índice global: {e}")
 
 class SipaWebBuilder:
     """
@@ -472,6 +512,7 @@ class SipaWebBuilder:
         activos = [
             ("", "base.html", self.templates),
             ("", "post.html", self.templates),
+            ("", "time.html", self.templates),
             ("", "custom.css", os.path.join(self.raiz, "css")),
             ("img", "avatargithub.png", os.path.join(self.raiz, "img")),
             ("img", "sobre-mi-bg.png", os.path.join(self.raiz, "img")),

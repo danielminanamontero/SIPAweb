@@ -2,14 +2,14 @@
 titulo: Proyectos
 nombre_sitio: Daniel Miñana Montero
 rol: Trayectoria Profesional
-subtitulo: Más de 20 años de evolución IT
+subtitulo: Plantearme metas es el plasma de mi ser.
 hero_bg: img/proyectos-bg.png
 estado: Protegido
 tag: Proyectos
 ---
 # Mis proyectos
 
-Bienvenido a mi rincón de pensar, y no habló en plan paradójico, es así, ante estos documentos, códigos, imágenes, paso gran parte de mi tiempo, disfruto imaginando posibilidades y proponiéndome retos técnicos o nuevos aprendizajes que me podría venir bien, bueno os he presentado mi espacio de proyectos, ahora quiero hacer hincapié en uno fundamentalmente, y en sus ramificaciones, hablamos de SIPA como mi proyecto principal desde hace unos meses y que tras una fase de rediseño y optimización en enero, decidí priorizar el despliegue de SIPAweb como la cara visible de un ecosistema mucho más profundo.
+Bienvenido a mi rincón de pensar, y no hablo en plan paradójico, es así; ante estos documentos, códigos, imágenes, paso gran parte de mi tiempo, disfruto imaginando posibilidades y proponiéndome retos técnicos o nuevos aprendizajes que me podrían venir bien. Bueno, os he presentado mi espacio de proyectos; ahora quiero hacer hincapié en uno fundamentalmente y en sus ramificaciones. Hablamos de SIPA como mi proyecto principal desde hace unos meses y que, tras una fase de rediseño y optimización en enero, decidí priorizar el despliegue de SIPAweb como la cara visible de un ecosistema mucho más profundo.
 
 Ahora sí, mi proyecto SIPA (Sistema de Identificación Personal Autorizada). Si queréis consultar más en profundidad alguno de los proyectos, los bloques a continuación os enlazan a sus páginas específicas; también aprovecho y os animo a dejar cualquier comentario constructivo a través de la página de contacto.
 

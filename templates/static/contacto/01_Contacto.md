@@ -2,7 +2,7 @@
 id: Contacto_ejemplo
 icono: ph-briefcase
 titulo: Contacto Destacados
-enlace: '#'
+enlace: index.html
 orden: 1
 estado: Auditado
 tag: Profesional
