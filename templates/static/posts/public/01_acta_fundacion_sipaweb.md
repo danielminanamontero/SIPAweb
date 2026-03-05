@@ -2,8 +2,8 @@
 titulo: Creación SIPAweb
 subtitulo: Acta fundación herramienta SIPAweb automatización creación web perfil profesional
 estado: proceso
-fecha_creacion: 2026-02-03
-fecha_publicacion: 2026-02-28
+fecha_creacion: 03/02/2026
+fecha_publicacion: 28/02/2026
 tag: python, arquitectura, web
 tipo: post
 autor: Daniel Miñana
