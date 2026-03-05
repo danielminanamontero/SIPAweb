@@ -2,8 +2,8 @@
 titulo: Plan de trabajo SIPAweb
 subtitulo: Cronograma proyecto SIPAweb
 estado: proceso
-fecha_creacion: 2026-02-03
-fecha_publicacion: 2026-02-28
+fecha_creacion: 03/02/2026
+fecha_publicacion: 28/02/2026
 tag: python, arquitectura, web
 tipo: post
 autor: Daniel Miñana
@@ -24,8 +24,8 @@ Hito 1: Estructura de documentación y base del conector Python.
     - Ubicación desarrollo: /SIPA_PROJECT/constructor/sipaweb/
   - [x] Instalación Mkdocs
     - Instalado en sipaweb, creado /SIPA_PROJECT/constructor/sipaweb/docs/index.md
-  - [x] Testeo y pruebas
-    - Pruebas al documentador
+  - [x] Tests y pruebas
+    - Pruebas al la herramienta de documentación
     - Pruebas al script
   - [x] Todo documentado y funcionando hito 1 conseguido
 
@@ -33,7 +33,7 @@ Hito 1: Estructura de documentación y base del conector Python.
 
 Hito 2: Página de presentación profesional (Landing Page inicial).
 
-- Generador y Despliege
+- Generador y Despliegue
 
 -Para alcanzar el hito 2, los pasos a seguir son estos
 
@@ -42,11 +42,11 @@ Hito 2: Página de presentación profesional (Landing Page inicial).
   - Crear templates/base.html
 - [x] Crear funciones en sipaweb.py incluirlas en la clase
   - leer_markdown_nativo()
-  - renderizar_index()
+  - render_index()
   - generar_sitio()
 - [x] Crear index.html
   - Test página html navegador
-- [x] Planificar el despliege
+- [x] Planificar el despliegue
   - Crear ubicación correcta
   - Crear index real .md, about-me.md debe ser secundaria, se incluye la biografía mínima
   - Crear proyectos.md
@@ -88,7 +88,7 @@ Hito 2 A : Confeccionar página a página
 
 ## Proyecto conjunto con SIPA_PROJECT
 
-Pendiente de retomar el SIPA_PROJECT para encajarlo en su cronograma de desarrollo
+Pendiente de retomar el SIPA_PROJECT para encajarle en su cronograma de desarrollo
 
 ### HITO 3 PLANIFICAR
 

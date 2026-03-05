@@ -318,19 +318,29 @@ class SipaFilePost(SipaModule):
         super().__init__(page_name, base_path)
         self.builder = builder
         
-        # Rutas de origen (donde escribes y mueves MDs)
+        # Rutas base
         self.process_folder = os.path.join(self.folder_path, "process")
         self.public_folder = os.path.join(self.folder_path, "public")
-        
-        # Ruta de destino real (donde vive la web)
         self.output_folder = os.path.join(self.builder.raiz, "posts")
+        
+        # NUEVO: Subcarpetas específicas en public
+        self.laboral_folder = os.path.join(self.public_folder, "laboral")
+        self.formativa_folder = os.path.join(self.public_folder, "formativa")
 
     def provision(self):
-        """Crea la estructura física del módulo."""
-        os.makedirs(self.process_folder, exist_ok=True)
-        os.makedirs(self.public_folder, exist_ok=True)
-        os.makedirs(self.output_folder, exist_ok=True)
+        """Crea la estructura física del módulo, incluyendo subcarpetas de trayectoria."""
+        carpetas = [
+            self.process_folder, 
+            self.public_folder, 
+            self.output_folder,
+            self.laboral_folder,   # <--- Nueva
+            self.formativa_folder  # <--- Nueva
+        ]
+        for carpeta in carpetas:
+            os.makedirs(carpeta, exist_ok=True)
+            print(f"[*] Verificada carpeta: {carpeta}")
         
+        # Semilla de ejemplo (solo si está todo vacío)
         ejemplo_path = os.path.join(self.process_folder, "00-plantilla-post.md")
         if not os.listdir(self.process_folder) and not os.listdir(self.public_folder):
             content = (
@@ -365,6 +375,7 @@ class SipaFilePost(SipaModule):
             partes = contenido.split('---', 2)
             if len(partes) >= 3:
                 meta_raw = partes[1].strip()
+                # Diccionario de metadatos: clave: valor
                 metadatos = {l.split(":",1)[0].strip(): l.split(":",1)[1].strip().strip('"') 
                             for l in meta_raw.split('\n') if ":" in l}
                 return metadatos, partes[2].strip()
@@ -374,110 +385,155 @@ class SipaFilePost(SipaModule):
             return {}, ""
 
     def ejecutar_ciclo_editorial(self):
-        """Renderizado de posts y generación automática del índice cronológico."""
-        # 1. Aseguramos infraestructura
+        """Renderizado recursivo de posts y clasificación automática."""
         self.provision() 
-
-        if not os.path.exists(self.public_folder):
-            return
-
-        # --- PREPARACIÓN DEL ACUMULADOR ---
         self.coleccion_posts = [] 
-        
-        files = [f for f in os.listdir(self.public_folder) if f.endswith(".md")]
-        
-        # --- BUCLE INDIVIDUAL (Dentro del for) ---
-        for filename in files:
-            ruta_md = os.path.join(self.public_folder, filename)
-            meta, texto = self._procesar_md(ruta_md)
-            
-            # A. Lógica de TOC (Anclajes y niveles)
-            lineas = texto.split('\n')
-            indice_dinamico = []
-            dentro_de_codigo = False 
 
-            for linea in lineas:
-                linea_clean = linea.strip()
-                if linea_clean.startswith('```'):
-                    dentro_de_codigo = not dentro_de_codigo
-                    continue 
+        # ESCANEO RECURSIVO: Entra en public/ y en cualquier subcarpeta
+        for raiz, carpetas, archivos in os.walk(self.public_folder):
+            for filename in archivos:
+                if not filename.endswith(".md"):
+                    continue
 
-                if not dentro_de_codigo and linea_clean.startswith('#'):
-                    nivel = linea_clean.count('#')
-                    if nivel <= 6:
-                        titulo = linea_clean.replace('#', '').strip()
-                        import re
-                        anchor = titulo.lower()
-                        # 2. Quitar acentos (Misión -> Mision)
-                        anchor = unicodedata.normalize('NFKD', anchor).encode('ascii', 'ignore').decode('ascii')
-                        anchor = re.sub(r'[^\w\s-]', '', anchor)
-                        anchor = re.sub(r'[\s]+', '-', anchor).strip('-')
-                        
-                        indice_dinamico.append({
-                            'nivel': nivel, 'titulo': titulo, 'anchor': anchor
-                        })
+                # A. Identificar si está en una subcarpeta (ej: 'laboral')
+                sub_relativa = os.path.relpath(raiz, self.public_folder)
+                sub_relativa = "" if sub_relativa == "." else sub_relativa
 
-            # B. Renderizado Markdown y Wrapper de Código
-            cuerpo_html = markdown.markdown(texto, extensions=['extra', 'codehilite', 'toc'])
-            cuerpo_html = cuerpo_html.replace(
-                '<div class="codehilite">', 
-                '<details class="code-accordion"><summary>Ver Bloque de Código</summary><div class="codehilite">'
-            ).replace('</pre></div>', '</pre></div></details>')
+                ruta_md = os.path.join(raiz, filename)
+                meta, texto = self._procesar_md(ruta_md)
+                
+                # B. Procesar TOC y Anclajes (Slugify con acentos)
+                # (Aquí mantenemos tu lógica de '#' y unicodedata que ya validamos)
+                lineas = texto.split('\n')
+                indice_dinamico = []
+                dentro_de_codigo = False 
 
-            # C. ACUMULACIÓN DE DATOS (Para el índice futuro)
-            out_name = filename.replace(".md", ".html")
-            self.coleccion_posts.append({
-                "url": out_name,
-                "titulo": meta.get("titulo", "Sin título"),
-                "subtitulo": meta.get("subtitulo", ""),
-                "fecha": meta.get("fecha_creacion", "2026-01-01"),
-                "tipo": meta.get("tipo", "post"),
-                "tag": meta.get("tag", "")
-            })
+                for linea in lineas:
+                    l_clean = linea.strip()
+                    if l_clean.startswith('```'):
+                        dentro_de_codigo = not dentro_de_codigo
+                        continue 
+                    if not dentro_de_codigo and l_clean.startswith('#'):
+                        nivel = l_clean.count('#')
+                        if nivel <= 6:
+                            titulo = l_clean.replace('#', '').strip()
+                            # Normalización para IDs
+                            import unicodedata, re
+                            anchor = titulo.lower()
+                            anchor = unicodedata.normalize('NFKD', anchor).encode('ascii', 'ignore').decode('ascii')
+                            anchor = re.sub(r'[^\w\s-]', '', anchor)
+                            anchor = re.sub(r'[\s]+', '-', anchor).strip('-')
+                            
+                            indice_dinamico.append({'nivel': nivel, 'titulo': titulo, 'anchor': anchor})
 
-            # D. Renderizado del Post Individual
-            contexto = {
-                "contenido": cuerpo_html,
-                "base_path": "../",
-                "toc": indice_dinamico,
-                **meta
-            }
+                # C. Renderizado HTML del cuerpo
+                cuerpo_html = markdown.markdown(texto, extensions=['extra', 'codehilite', 'toc'])
+                # Tu reemplazo para el acordeón de código
+                cuerpo_html = cuerpo_html.replace(
+                    '<div class="codehilite">', 
+                    '<details class="code-accordion"><summary>Ver Bloque de Código</summary><div class="codehilite">'
+                ).replace('</pre></div>', '</pre></div></details>')
 
-            try:
-                template = self.builder.env.get_template('post.html')
-                html_final = template.render(**contexto)
-                ruta_salida = os.path.join(self.output_folder, out_name)
-                with open(ruta_salida, "w", encoding="utf-8") as f:
-                    f.write(html_final)
-                print(f"[!] ÉXITO Editorial: {out_name}")
-            except Exception as e:
-                print(f"[X] Error en renderizado de {filename}: {e}")
+                # D. Gestión de Salida y Profundidad
+                out_name = filename.replace(".md", ".html")
+                # URL relativa para el índice (ej: laboral/mi_puesto.html)
+                url_final = os.path.join(sub_relativa, out_name).replace("\\", "/")
+                
+                # Calculamos profundidad: si está en subcarpeta, base_path es ../../
+                profundidad = len(sub_relativa.split(os.sep)) if sub_relativa else 0
+                prefix = "../" * (profundidad + 1)
 
-        # --- FASE FINAL (Fuera del bucle for) ---
-        # Solo si hemos acumulado algo, generamos el índice global
+                # E. Acumular para los índices (usamos fecha_inicio si es laboral/formativa)
+                fecha_item = meta.get("fecha_creacion", meta.get("fecha_inicio", "2026-01-01"))
+
+                # ... dentro del bucle de archivos ...
+                tipo_limpio = meta.get("tipo", "post").strip().lower() # Limpieza de seguridad
+                
+                self.coleccion_posts.append({
+                    "url": url_final,
+                    "titulo": meta.get("titulo", "Sin título"),
+                    "subtitulo": meta.get("subtitulo", ""),
+                    "fecha": fecha_item,
+                    "tipo": tipo_limpio,
+                    "tag": meta.get("tag", "")
+                })
+
+                # F. Guardar archivo físico
+                ruta_dest_carpeta = os.path.join(self.output_folder, sub_relativa)
+                os.makedirs(ruta_dest_carpeta, exist_ok=True)
+                
+                contexto = {
+                    "contenido": cuerpo_html,
+                    "base_path": prefix,
+                    "toc": indice_dinamico,
+                    **meta
+                }
+
+                try:
+                    template = self.builder.env.get_template('post.html')
+                    html_final = template.render(**contexto)
+                    with open(os.path.join(ruta_dest_carpeta, out_name), "w", encoding="utf-8") as f:
+                        f.write(html_final)
+                    print(f"[!] ÉXITO Editorial: {url_final}")
+                except Exception as e:
+                    print(f"[X] Error en {filename}: {e}")
+
+        # G. Generar índices al finalizar el bucle
         if self.coleccion_posts:
-            self.generar_indice_global()
+            self.generar_indices_multifase()
 
-    def generar_indice_global(self):
-        """Construye list_posts.html usando la plantilla de cronología."""
-        # Ordenamos: lo más reciente arriba
-        self.coleccion_posts.sort(key=lambda x: x['fecha'], reverse=True)
+    def generar_indices_multifase(self):
+        """Genera el índice general y los específicos de Trayectoria."""
+    
+        # --- FUNCIÓN INTERNA DE CONVERSIÓN ---
+        def helper_fecha(item):
+            fecha_str = item.get('fecha', '01/01/1900')
+            try:
+                # Convertimos el texto dd/mm/aaaa en un objeto fecha real
+                return datetime.strptime(fecha_str, "%d/%m/%Y")
+            except Exception:
+                # Si algo falla, lo manda al final del listado
+                return datetime(1900, 1, 1)
 
+        # 1. ORDENACIÓN REAL (Usando el helper)
+        # Ahora sí, 2026 irá arriba de 1988 aunque sea texto.
+        self.coleccion_posts.sort(key=helper_fecha, reverse=True)
+
+        # A. ÍNDICE GLOBAL
+        self._escribir_archivo_indice(
+            items=self.coleccion_posts, 
+            nombre_archivo="list_posts.html", 
+            titulo="Índice de Actividad"
+        )
+
+        # B. TRAYECTORIA LABORAL
+        laborales = [p for p in self.coleccion_posts if p.get('tipo') == 'laboral']
+        if laborales:
+            self._escribir_archivo_indice(laborales, "trayectoria_laboral.html", "Trayectoria Profesional")
+
+        # C. TRAYECTORIA FORMATIVA
+        formativos = [p for p in self.coleccion_posts if p.get('tipo') == 'formativa']
+        if formativos:
+            self._escribir_archivo_indice(formativos, "trayectoria_formativa.html", "Trayectoria Formativa")
+
+    def _escribir_archivo_indice(self, items, nombre_archivo, titulo):
+        """Helper privado para renderizar la plantilla time.html con seguridad."""
         contexto = {
-            "items": self.coleccion_posts,
-            "titulo_pagina": "Índice de Actividad",
-            "base_path": "../"
+            "items": items,
+            "titulo_pagina": titulo,
+            "base_path": "../"  # Los índices viven en /posts/, necesitan un salto atrás
         }
 
         try:
             template = self.builder.env.get_template('time.html')
             html_final = template.render(**contexto)
-            ruta_salida = os.path.join(self.output_folder, "list_posts.html")
+            ruta_salida = os.path.join(self.output_folder, nombre_archivo)
+            
             with open(ruta_salida, "w", encoding="utf-8") as f:
                 f.write(html_final)
-            print(f"[!] ÉXITO: Generado list_posts.html con {len(self.coleccion_posts)} registros.")
+            print(f"[!] ÉXITO: Generado {nombre_archivo} con {len(items)} registros.")
         except Exception as e:
-            print(f"[X] Error en el índice global: {e}")
+            print(f"[X] Error al generar el índice {nombre_archivo}: {e}")
 
 class SipaWebBuilder:
     """

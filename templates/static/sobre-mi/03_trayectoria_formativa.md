@@ -2,7 +2,7 @@
 id: Trayectoria formativa
 icono: ph-briefcase
 titulo: Currículum - Educación y formación
-enlace: index.html
+enlace: posts/trayectoria_formativa.html
 orden: 1
 estado: Auditado
 tag: Currículum
