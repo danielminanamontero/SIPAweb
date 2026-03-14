@@ -2,7 +2,7 @@
 titulo: Técnico de campo IT
 entidad: NCR ESPAÑA SL
 entidad_publica: Tecnología
-fecha_inicio: 10/02/2026
+fecha_inicio: 10/02/2025
 fecha_fin: actual
 tipo: laboral
 perfil: tecnologico
