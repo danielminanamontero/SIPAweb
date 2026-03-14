@@ -81,14 +81,14 @@ Hito 2 A : Confeccionar página a página
 - [x] Enlace de los proyectos en el pie según perfil tovid o mimod
 - [x] Diseño estructura, acciones, contenido de sobre-mi.html
 - [x] Diseño estructura, acciones, contenido de proyectos.html
-- [ ] Diseño estructura, acciones, contenido de contacto.html
+- [x] Diseño estructura, acciones, contenido de contacto.html
 - [ ] Diseño estructura, acciones, contenido de ayuda.html
 
 [] Cierre proyecto SIPAweb versión 1.5
 
 ## Proyecto conjunto con SIPA_PROJECT
 
-Pendiente de retomar el SIPA_PROJECT para encajarle en su cronograma de desarrollo
+Pendiente de retomar el SIPA_PROJECT para encajarle en su cronograma de desarrollo, terminar el contenido de sipaweb completo, trayectorias laborales y formativas, antes de pasar a ningún otro proyecto, documentación completa.
 
 ### HITO 3 PLANIFICAR
 
@@ -107,5 +107,7 @@ Hito 4: Módulo de análisis de mercado e inyección de contenido IA.
 ### PLANIFICACIÓN VERSIONES SIGUIENTES
 
 - [] Formulario contacto a la inversa
+  - [] Opciones, telegram, railway, vetel
 - [] Refactorización css
 - [] Adaptación formatter markdown genérico
+- [] Barra navegación convertirla en menu en pantalla teléfono

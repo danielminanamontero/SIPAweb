@@ -1,5 +1,5 @@
 ---
-titulo: Conductor vehículos inf a 3500 kg
+titulo: Conductor vehículos < 3500 kg
 entidad: José Gaspar Gaya Sarrión
 entidad_publica: Transporte
 fecha_inicio: 09/09/2003
@@ -11,13 +11,11 @@ tags: transporte urgente
 
 # Detalles experiencia
 
-**Sector** : Transporte (Transporte urgente de mercancías por carretera)
-
-**Fecha inicio** : 09/09/2003
-**Fecha fin** : 28/07/2006
-**Duración en meses** : 34 meses
-
-**Categoría del puesto** : Conductor vehículos < 3.500 kg
+- **Sector** : Transporte (Transporte urgente de mercancías por carretera)
+- **Fecha inicio** : 09/09/2003
+- **Fecha fin** : 28/07/2006
+- **Duración en meses** : 34 meses
+- **Categoría del puesto** : Conductor vehículos < 3.500 kg
 
 ## Funciones realizadas
 

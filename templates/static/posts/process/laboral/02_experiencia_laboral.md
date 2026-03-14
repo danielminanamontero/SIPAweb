@@ -1,5 +1,5 @@
 ---
-titulo: Conductor vehículos inf a 3500 kg
+titulo: Conductor vehículos > 3500 kg
 entidad: José Gaspar Gaya Sarrión
 entidad_publica: Transporte
 fecha_inicio: 09/09/2003
@@ -17,7 +17,7 @@ Conductor de vehículos menor a 3500 kg, fundamentalmente furgonetas o carrozado
 
 - Duración en meses: 34 meses
 - Séctor empresa: Transporte
-- Categoria del puesto: Conductor
+- Categoría del puesto: Conductor
 
 ## Habilidades adquiridas
 

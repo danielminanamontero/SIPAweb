@@ -12,11 +12,9 @@ tags: gestión, tramitación, archivo, documentación
 # Detalles experiencia
 
 **Sector** : Servicios (Servicios a empresas - Consultoría y Asesoría)
-
 **Fecha inicio** : 05/12/1988
 **Fecha fin** : 04/09/1989
 **Duración en meses** : 10 meses
-
 **Categoría del puesto** : Empleados administrativos en general
 
 ## Funciones realizadas

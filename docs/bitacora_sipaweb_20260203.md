@@ -88,7 +88,7 @@ sipaweb/
 
 ### BITÁCORA - CERRADA - 20260203 204709
 
-#### Tema tratado : Modificación fichero mkdocs.yml ejecutar docstrings automaticamente
+#### Tema tratado : Modificación fichero mkdocs.yml ejecutar docstrings automáticamente
 
 Tras tener aprobada el apta, la estructura creada y en marcha el registro, el paso siguiente es configurar la herramienta que nos realizara la función de documentador, aunque parezca que estoy anteponiendo el documentador al mismo objetivo del proyecto que solo llegara por el código que realicemos, esta preparación es fundamental para darle valor a lo que llaman periodo de vida de un código.
 
