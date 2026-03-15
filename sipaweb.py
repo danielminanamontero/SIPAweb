@@ -576,8 +576,11 @@ class SipaWebBuilder:
             ("img", "danielminanamontero-logo.png", os.path.join(self.raiz, "img")), # Nuevo: Tu logo azul
             ("img", "proyectos-bg.png", os.path.join(self.raiz, "img")),
             ("img", "contacto-bg.png", os.path.join(self.raiz, "img")),
+            ("img", "ayuda-bg.png", os.path.join(self.raiz, "img")),
             ("pdf", "2018_porfolio.pdf", os.path.join(self.raiz, "pdf")),
-            ("pdf", "certificado_profesionalidad.pdf", os.path.join(self.raiz, "pdf"))
+            ("pdf", "certificado_profesionalidad.pdf", os.path.join(self.raiz, "pdf")),
+            ("pdf", "certificado_servef_00.pdf", os.path.join(self.raiz, "pdf")),
+            ("pdf", "certificado_servef_01.pdf", os.path.join(self.raiz, "pdf"))
         ]
         
         for subfolder, nombre, destino_folder in activos:
