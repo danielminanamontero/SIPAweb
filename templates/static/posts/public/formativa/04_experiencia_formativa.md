@@ -9,7 +9,7 @@ tags: educación, formación, reglada ministerio trabajo
 
 # Instalador de equipos y sistemas de comunicaciones
 
-Terminaba o quería que terminará una etapa en otro sector, y la única forma de volver al sector donde más comodo me encontraba era plamar negro sobre blanco, formarme en lo que me gustaba, instalar redes era fácil para mí, comprendía la topología rápidamente y mis habilidades manuales me permitian ser rápido en el trabajo manual y pasar inmediatamente a la configuración de los equipos que era donde realmente disfrutaba, ver fluir los datos es apasionante.
+Terminaba o quería que terminará una etapa en otro sector, y la única forma de volver al sector donde más cómodo me encontraba era plasmar negro sobre blanco, formarme en lo que me gustaba, instalar redes era fácil para mí, comprendía la topología rápidamente y mis habilidades manuales me permitían ser rápido en el trabajo manual y pasar inmediatamente a la configuración de los equipos que era donde realmente disfrutaba, ver fluir los datos es apasionante.
 
 ## Plan formativo
 
@@ -19,7 +19,7 @@ Terminaba o quería que terminará una etapa en otro sector, y la única forma d
 - Meses: 03
 - Tipo: Presencial
 - Centro: AULA MI2 SL
-- NºExpediente: FCC99/2010/477/46
+- Nº Expediente: FCC99/2010/477/46
 - Horas: 240
 - Temario:
       - Instalación de redes informáticas de ordenadores. 240 horas
@@ -32,8 +32,8 @@ Terminaba o quería que terminará una etapa en otro sector, y la única forma d
 
 ## Experiencias
 
-Fue una decisión importante abandonar un sector que sí me gustaba pero tenía una contradicción fundamental, te priva de estar en casa. Sabía que la adaptación iba a ser dura pero que el camino me podía llevar a alcanzar mejor situación a la que tenía en periodos anteriores en el sector tecnologico, no solo podría decir se hace esto, lo podria corroborar con documentación legal, ese era mi objetivo fundamental.
+Fue una decisión importante abandonar un sector que sí me gustaba pero tenía una contradicción fundamental, te priva de estar en casa. Sabía que la adaptación iba a ser dura pero que el camino me podía llevar a alcanzar mejor situación a la que tenía en periodos anteriores en el sector tecnológico, no solo podría decir se hace esto, lo podría corroborar con documentación legal, ese era mi objetivo fundamental.
 
 ## Adjuntos
 
-- [Certificado_de_Servef](/pdf/certificado_servef_00.pdf)
+- [Certificado_de_Servef](../../pdf/certificado_servef_00.pdf)
