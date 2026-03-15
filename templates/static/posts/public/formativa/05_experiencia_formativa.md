@@ -42,5 +42,5 @@ Fue un periodo complicado, durante todo el desarrollo del curso incluido las pr√
 
 ## Adjuntos
 
-- [Certificado_de_Profesionalidad](/pdf/certificado_profesionalidad.pdf)
-- [Certificado_de_Servef](/pdf/certificado_servef_01.pdf)
+- [Certificado_de_Profesionalidad](../../pdf/certificado_profesionalidad.pdf)
+- [Certificado_de_Servef](../../pdf/certificado_servef_01.pdf)
