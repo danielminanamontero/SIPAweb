@@ -19,3 +19,8 @@ constructor/
 
 # Templates desarrollo
 templates/static/posts/process
+
+# Sincronización con Mega
+.megaignore
+.directory
+
