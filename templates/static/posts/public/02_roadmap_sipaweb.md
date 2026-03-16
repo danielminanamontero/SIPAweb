@@ -82,13 +82,23 @@ Hito 2 A : Confeccionar página a página
 - [x] Diseño estructura, acciones, contenido de sobre-mi.html
 - [x] Diseño estructura, acciones, contenido de proyectos.html
 - [x] Diseño estructura, acciones, contenido de contacto.html
-- [ ] Diseño estructura, acciones, contenido de ayuda.html
+- [x] Diseño estructura, acciones, contenido de ayuda.html
 
-[] Cierre proyecto SIPAweb versión 1.5
+CIERRE DE VERSIÓN Y LANZAMIENTO
+
+- [] Cierre proyecto SIPAweb versión 1.5
+  - [] Sistema de creación y descarga curriculum en .pdf
+  - [] Botones de listados todos, laboral, formativa
+  - [] Botones e imágenes con etiquetas alt
+  - [] Iconos hover con su nombre
+  - [] Completar contenido laboral
+  - [] Completar contenido formativo
+
+- [] Lanzamiento en perfiles públicos
 
 ## Proyecto conjunto con SIPA_PROJECT
 
-Pendiente de retomar el SIPA_PROJECT para encajarle en su cronograma de desarrollo, terminar el contenido de sipaweb completo, trayectorias laborales y formativas, antes de pasar a ningún otro proyecto, documentación completa.
+Pendiente de retomar el SIPA_PROJECT para encajarle en su cronograma de desarrollo
 
 ### HITO 3 PLANIFICAR
 

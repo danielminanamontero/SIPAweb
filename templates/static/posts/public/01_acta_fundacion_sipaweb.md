@@ -1,7 +1,7 @@
 ---
 titulo: Creación SIPAweb
 subtitulo: Acta fundación herramienta SIPAweb automatización creación web perfil profesional
-estado: proceso
+estado: activo
 fecha_creacion: 03/02/2026
 fecha_publicacion: 28/02/2026
 tag: python, arquitectura, web
